@@ -2,32 +2,35 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
 
-  <title>AquaTech | Cadastro</title>
+
+  <title>S.A.L.T</title>
 
   <script src="./js/sessao.js"></script>
 
-  <link rel="stylesheet" href="./css/estilo.css" />
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="./css/estilo.css">
+  <link rel="icon" href="./assets/icon/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body onload="listar()">
+
   <!--header inicio-->
+
+  <div class="cruz"></div>
   <div class="header">
     <div class="container">
-      <h1 class="titulo">AquaTech</h1>
       <ul class="navbar">
         <li>
-          <a href="index.html">Inicial</a>
+          <a href="Sobrenos.html">Sobre nós</a>
         </li>
         <li>
-          <a href="simulador.html">Simulador</a>
+          <a href="index.html">Home</a>
         </li>
-        <li>|</li>
         <li>
           <a href="login.html">Login</a>
         </li>
@@ -53,10 +56,7 @@
                          Para inserir mais um campo, copie uma das inputs abaixo.
                          Assim que inserir vá para o script abaixo.
                      -->
-          <div class="campo">
-            <span>Código de ativação:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div>
+
           <div class="campo">
             <span>Nome:</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
@@ -85,12 +85,18 @@
   </div>
 
   <!--footer inicio-->
-  <div class="footer">
-    <div class="container">
-      <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-      <span class="version">v1.0.0</span>
-    </div>
-  </div>
+  <footer class="footer">
+    <span id="email">saltweb.christianverse@gmail.com</span>
+    <span id="midias">Facebook | Instagram | LinkedIn</span>
+    <img class="icon-Facebook" src="./assets/icon/icon-Facebook.png">
+    <img class="icon-Instagram" src="./assets/icon/icon-Instagram.png">
+    <img class="icon-Linkedin" src="./assets/icon/icon-Linkedin.png">
+    <span id="numero">55 (11) 93186-0385</span>
+    <div class="footer-bar" id="footer-bar">[S.A.L.T] © [2025] | 
+      <a>Política de Privacidade</a> | 
+      <a>Termos de Uso</a> | 
+      Todos os direitos reservados.</div>
+  </footer>
   <!--footer fim-->
 </body>
 

@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cinzel:wght@400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Cinzel", serif;
   background-color: black;
 }
 
@@ -22,39 +22,43 @@ body {
 }
 
 .cruz {
-  position: absolute; /* permite posicionar em qualquer lugar da tela */
-  top: 13%; /* move o topo da cruz para o meio da tela */
-  left: 50%; /* move a esquerda da cruz para o meio da tela */
-  transform: translate(-50%, -50%); /* ajusta para centralizar exatamente */
-  
-  width: 18px; /* largura do traço vertical */
-  height: 157px; /* altura maior, para parecer a cruz de Jesus */
-  background: white; /* cor da cruz */
-  box-shadow: 0 0 15px white, 0 0 30px white, 0 0 60px white; /* brilho ao redor */
-  z-index: 9999; /* garante que fique acima de todos os elementos */
+  position: absolute;
+  top: 17%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 214px;
+  background: white;
+  box-shadow: 0 0 35px white,
+              0 0 30px white,
+              0 0 60px white;
+  z-index: 9999;
 }
 
 .cruz::before {
-  content: ""; /* cria um novo elemento dentro da cruz */
-  position: absolute; /* posicionamento relativo à cruz principal */
-  left: -44px; /* posiciona o início da barra horizontal */
-  top: 38px; /* move o traço horizontal mais para cima (não no centro) */
-  width: 106px; /* comprimento do traço horizontal */
-  height: 18px; /* espessura igual ao traço vertical */
-  background: white; /* cor branca */
-  box-shadow: 0 0 15px white, 0 0 30px white, 0 0 60px white; /* brilho também no traço horizontal */
+  content: "";
+  position: absolute;
+  left: -69px;
+  top: 48px;
+  width: 165px;
+  height: 27px;
+  background: white;
+  box-shadow: 0 0 35px white,
+              0 0 30px white,
+              0 0 60px white;
 }
 
 
 .header {
   height: var(--tamanho-header);
-  background: radial-gradient(circle, 
-                #002B96 30%, 
-                #002B78 60%,
-                #002b5c 100%); /*Degrade no fundo da tela*/
-    border-left: #002B96 5px solid;
-    border-right: #002B96 5px solid;
-    border-bottom: #002B96 5px solid;
+  background: radial-gradient(circle,
+      #002B96 30%,
+      #002B78 60%,
+      #002b5c 100%);
+  /*Degrade no fundo da tela*/
+  border-left: #002B96 5px solid;
+  border-right: #002B96 5px solid;
+  border-bottom: #002B96 5px solid;
 }
 
 .header .container {
@@ -63,9 +67,16 @@ body {
   height: 100%;
 }
 
-.header a {
+.navbar a {
   text-decoration: none;
-  color: #e3b062;
+  color: blue;
+  background-color: #d9d9d9;
+  box-shadow: 
+            0 2px 0px white,
+            0 5px 5px white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 125%;
 }
 
 .agora {
@@ -73,18 +84,18 @@ body {
 }
 
 .navbar {
-  width: 300px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  color: #e3b062;
+  gap: 20px;
+  padding: 0;
 }
 
-.titulo {
-  color: #32b9cd;
-  width: fit-content;
-  font-weight: 500;
+
+.navbar li:nth-child(2) {
+  margin-right: 25%;
 }
 
 .header h1 {
@@ -98,16 +109,31 @@ body {
   color: white;
   background-image: url('../assets/imgs/ImagemBiblia.png');
   background-size: cover;
+  position: relative;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  /* Escurece a imagem com 50% de opacidade */
+  z-index: 1;
+  /* Garante que a camada escura fique sobre a imagem */
 }
 
 .banner .container {
   justify-content: center;
   align-items: center;
   height: 50%;
-  background-color: #002a788a;
+  background-color: #002a78b3;
   position: relative;
   top: 20%;
   border-radius: 26px;
+  z-index: 1;
 }
 
 .banner .container p {
@@ -158,22 +184,160 @@ body {
 
 /* FOOTER */
 
-.footer {
-  background-color: #32b9cd;
-  height: 150px;
-  color: #fff;
-  display: flex;
-  font-size: 15px;
+.footer{
+  height: 130px;  /*Ajuste altura do header*/
+  display: flex; /* Usando flexbox */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1; /* Garante que o header esteja acima */
+  padding: 0; /* Remove a margem interna */
+  background: radial-gradient(circle,
+          #002B96 30%,
+          #002B78 60%,
+          #002b5c 100%); /*Degrade no fundo da tela*/
+  border-left: #002B96 5px solid;
+  border-right: #002B96 5px solid;
+  border-top: #002B96 5px solid;
 }
 
-.footer .container {
-  justify-content: center;
-  text-align: center;
+
+
+#email {
+  font-size: 16px;
+  color: white;
+  position: absolute; /* Torna a posição do botão independente */
+  left: 60px; /* Define a distância do lado esquerdo */
+  top: 25px; /* Define a distância do topo */
+  width: 118px; /* Define a largura do botão*/
+  height: 60px; /* Define a altura do botão*/
+  text-align: center; /* Centraliza horizontalmente o texto dentro do botão */
+  line-height: 50px; /* Centraliza verticalmente o texto ao igualar ao valor da altura */
+  font-size: 16px; /* Define o tamanho da fonte do texto */
 }
 
-.footer .container .version {
-  font-size: 12px;
+#email:hover {
+  text-decoration: underline; /* Efeito de sublinhado ao passar o mouse */
 }
+
+
+
+
+#midias {
+  font-size: 14px;
+  color: white;
+  position: absolute; /* Torna a posição do botão independente */
+  left: 642px;
+    top: -10px;
+    width: 278px;
+  height: 49px; /* Define a altura do botão*/
+  text-align: center; /* Centraliza horizontalmente o texto dentro do botão */
+  line-height: 50px; /* Centraliza verticalmente o texto ao igualar ao valor da altura */
+  font-size: 16px; /* Define o tamanho da fonte do texto */
+}
+
+
+.icon-Facebook{
+  position: absolute; /* Fixa a imagem em relação à janela da tela */
+  top: 30px; /* Distância do topo da tela */
+  left: 665px; /* Distância do lado esquerdo */
+  width: 55px; /* Largura da imagem */
+  height: auto; /* Altura proporcional à largura */
+  pointer-events: none; /* Impede interação para que os cliques passem pelos elementos */
+  pointer-events: auto; /* Permite interação com o mouse */
+  transition: transform 0.3s ease-in-out; /* Suaviza o efeito de transformação */
+}
+
+.icon-Facebook:hover{
+  transform: scale(1.2); /* Aumenta 20% ao passar o mouse */
+}
+
+
+
+.icon-Instagram{
+  position: absolute; /* Fixa a imagem em relação à janela da tela */
+  top: 30px; /* Distância do topo da tela */
+  left: 760px; /* Distância do lado esquerdo */
+  width: 55px; /* Largura da imagem */
+  height: auto; /* Altura proporcional à largura */
+  pointer-events: none; /* Impede interação para que os cliques passem pelos elementos */
+  pointer-events: auto; /* Permite interação com o mouse */
+  transition: transform 0.3s ease-in-out; /* Suaviza o efeito de transformação */
+}
+
+.icon-Instagram:hover{
+  transform: scale(1.2); /* Aumenta 20% ao passar o mouse */
+}
+
+
+
+.icon-Linkedin{
+  position: absolute; /* Fixa a imagem em relação à janela da tela */
+  top: 30px; /* Distância do topo da tela */
+  left: 848px; /* Distância do lado esquerdo */
+  width: 55px; /* Largura da imagem */
+  height: auto; /* Altura proporcional à largura */
+  pointer-events: none; /* Impede interação para que os cliques passem pelos elementos */
+  pointer-events: auto; /* Permite interação com o mouse */
+  transition: transform 0.3s ease-in-out; /* Suaviza o efeito de transformação */
+}
+
+.icon-Linkedin:hover{
+  transform: scale(1.2); /* Aumenta 20% ao passar o mouse */
+}
+
+
+
+
+#numero {
+  font-size: 14px;
+  color: white;
+  position: absolute; /* Torna a posição do botão independente */
+  left: 1390px; /* Define a distância do lado esquerdo */
+  top: 25px; /* Define a distância do topo */
+  width: 148px; /* Define a largura do botão*/
+  height: 49px; /* Define a altura do botão*/
+  text-align: center; /* Centraliza horizontalmente o texto dentro do botão */
+  line-height: 50px; /* Centraliza verticalmente o texto ao igualar ao valor da altura */
+  font-size: 16px; /* Define o tamanho da fonte do texto */
+}
+
+#numero:hover {
+  text-decoration: underline; /* Efeito de sublinhado ao passar o mouse */
+}
+
+
+
+
+.footer-bar {
+  font-size: 16px;
+  background-color: #d9d9d9;
+  color: blue;
+  position: absolute; /* Torna a posição do botão independente */
+  left: -5px; /* Define a distância do lado esquerdo */
+  top: 92px; /* Define a distância do topo */
+  width: 100%; /* Define a largura */
+  height: 45px; /* Define a altura */
+  text-align: center; /* Centraliza horizontalmente o texto */
+  line-height: 38px; /* Centraliza verticalmente o texto */
+  white-space: nowrap; /* Evita quebra de linha */
+  overflow: hidden; /* Garante que texto extra não quebre linhas */
+  border-left: #aaaaaa 5px solid;
+  border-right: #aaaaaa 5px solid;
+}
+
+#footer-bar a {
+  text-decoration: none; /* Remove sublinhado */
+  color: inherit; /* Herda a cor do texto ao redor */
+  cursor: pointer; /* Mantém o cursor de "clicável" */
+  display: inline; /* Mantém os links na mesma linha */
+}
+
+#footer-bar a:hover {
+  text-decoration: underline; /* Adiciona sublinhado no hover */
+}
+
 
 /* LOGIN */
 
