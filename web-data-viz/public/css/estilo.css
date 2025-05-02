@@ -120,9 +120,7 @@ body {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  /* Escurece a imagem com 50% de opacidade */
   z-index: 1;
-  /* Garante que a camada escura fique sobre a imagem */
 }
 
 .banner .container {
@@ -343,24 +341,43 @@ body {
 
 .login {
   height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
   background-size: cover;
+  position: relative;
+  background-color: white;
 }
+
+.login::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
 
 .login .container {
   justify-content: center;
   align-items: center;
   height: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .card {
   width: 50%;
-  background-color: #e5e5e5;
+  background: radial-gradient(circle,
+          #002B96 30%,
+          #002B78 60%,
+          #002b5c 100%); /*Degrade no fundo da tela*/
+  border: #002B96 5px solid;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
+  color: white;
   flex-direction: column;
   height: fit-content;
   padding: 20px 0;
@@ -415,8 +432,8 @@ body {
   border-radius: 5px;
   font-weight: 600;
   font-size: 18px;
-  color: #fff;
-  background-color: #ED145B;
+  color: blue;;
+  background-color: white;
   width: 120px;
   height: 30px;
   align-self: center;
