@@ -12,7 +12,7 @@ body {
   --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-footer: 65px;
+  --tamanho-footer: 93px;
 }
 
 .container {
@@ -30,8 +30,8 @@ body {
   height: 214px;
   background: white;
   box-shadow: 0 0 35px white,
-              0 0 30px white,
-              0 0 60px white;
+    0 0 30px white,
+    0 0 60px white;
   z-index: 9999;
 }
 
@@ -44,8 +44,8 @@ body {
   height: 27px;
   background: white;
   box-shadow: 0 0 35px white,
-              0 0 30px white,
-              0 0 60px white;
+    0 0 30px white,
+    0 0 60px white;
 }
 
 
@@ -55,9 +55,6 @@ body {
       #002B96 30%,
       #002B78 60%,
       #002b5c 100%);
-  /*Degrade no fundo da tela*/
-  border-left: #002B96 5px solid;
-  border-right: #002B96 5px solid;
   border-bottom: #002B96 5px solid;
 }
 
@@ -71,9 +68,9 @@ body {
   text-decoration: none;
   color: blue;
   background-color: #d9d9d9;
-  box-shadow: 
-            0 2px 0px white,
-            0 5px 5px white;
+  box-shadow:
+    0 2px 0px white,
+    0 5px 5px white;
   padding: 8px 16px;
   border-radius: 8px;
   font-size: 125%;
@@ -182,160 +179,87 @@ body {
 
 /* FOOTER */
 
-.footer{
-  height: 130px;  /*Ajuste altura do header*/
-  display: flex; /* Usando flexbox */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
-  margin-bottom: 0;
-  position: relative;
-  z-index: 1; /* Garante que o header esteja acima */
-  padding: 0; /* Remove a margem interna */
+.footer {
+  height: 150px;
+  flex-direction: column;
+  display: flex;
+  font-size: 18px;
+  color: #fff;
   background: radial-gradient(circle,
-          #002B96 30%,
-          #002B78 60%,
-          #002b5c 100%); /*Degrade no fundo da tela*/
-  border-left: #002B96 5px solid;
-  border-right: #002B96 5px solid;
+      #002B96 30%,
+      #002B78 60%,
+      #002b5c 100%);
   border-top: #002B96 5px solid;
 }
 
-
-
-#email {
-  font-size: 16px;
-  color: white;
-  position: absolute; /* Torna a posição do botão independente */
-  left: 60px; /* Define a distância do lado esquerdo */
-  top: 25px; /* Define a distância do topo */
-  width: 118px; /* Define a largura do botão*/
-  height: 60px; /* Define a altura do botão*/
-  text-align: center; /* Centraliza horizontalmente o texto dentro do botão */
-  line-height: 50px; /* Centraliza verticalmente o texto ao igualar ao valor da altura */
-  font-size: 16px; /* Define o tamanho da fonte do texto */
+.contato:hover {
+  text-decoration: underline;
 }
 
-#email:hover {
-  text-decoration: underline; /* Efeito de sublinhado ao passar o mouse */
+.midias {
+  width: 80.7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin-left: 14%;
+  position: relative;
+  top: 20%;
 }
 
 
-
-
-#midias {
-  font-size: 14px;
-  color: white;
-  position: absolute; /* Torna a posição do botão independente */
-  left: 642px;
-    top: -10px;
-    width: 278px;
-  height: 49px; /* Define a altura do botão*/
-  text-align: center; /* Centraliza horizontalmente o texto dentro do botão */
-  line-height: 50px; /* Centraliza verticalmente o texto ao igualar ao valor da altura */
-  font-size: 16px; /* Define o tamanho da fonte do texto */
+.redes {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 14%;
 }
 
 
-.icon-Facebook{
-  position: absolute; /* Fixa a imagem em relação à janela da tela */
-  top: 30px; /* Distância do topo da tela */
-  left: 665px; /* Distância do lado esquerdo */
-  width: 55px; /* Largura da imagem */
-  height: auto; /* Altura proporcional à largura */
-  pointer-events: none; /* Impede interação para que os cliques passem pelos elementos */
-  pointer-events: auto; /* Permite interação com o mouse */
-  transition: transform 0.3s ease-in-out; /* Suaviza o efeito de transformação */
-}
-
-.icon-Facebook:hover{
-  transform: scale(1.2); /* Aumenta 20% ao passar o mouse */
+.icons-group {
+  display: flex;
+  gap: 48px;
+  margin-left: 3%;
 }
 
 
 
-.icon-Instagram{
-  position: absolute; /* Fixa a imagem em relação à janela da tela */
-  top: 30px; /* Distância do topo da tela */
-  left: 760px; /* Distância do lado esquerdo */
-  width: 55px; /* Largura da imagem */
-  height: auto; /* Altura proporcional à largura */
-  pointer-events: none; /* Impede interação para que os cliques passem pelos elementos */
-  pointer-events: auto; /* Permite interação com o mouse */
-  transition: transform 0.3s ease-in-out; /* Suaviza o efeito de transformação */
+.icons {
+  height: 57px;
+  pointer-events: auto;
+  transition: transform 0.3s ease-in-out;
+
 }
 
-.icon-Instagram:hover{
-  transform: scale(1.2); /* Aumenta 20% ao passar o mouse */
+.icons:hover {
+  transform: scale(1.2);
 }
-
-
-
-.icon-Linkedin{
-  position: absolute; /* Fixa a imagem em relação à janela da tela */
-  top: 30px; /* Distância do topo da tela */
-  left: 848px; /* Distância do lado esquerdo */
-  width: 55px; /* Largura da imagem */
-  height: auto; /* Altura proporcional à largura */
-  pointer-events: none; /* Impede interação para que os cliques passem pelos elementos */
-  pointer-events: auto; /* Permite interação com o mouse */
-  transition: transform 0.3s ease-in-out; /* Suaviza o efeito de transformação */
-}
-
-.icon-Linkedin:hover{
-  transform: scale(1.2); /* Aumenta 20% ao passar o mouse */
-}
-
-
-
-
-#numero {
-  font-size: 14px;
-  color: white;
-  position: absolute; /* Torna a posição do botão independente */
-  left: 1390px; /* Define a distância do lado esquerdo */
-  top: 25px; /* Define a distância do topo */
-  width: 148px; /* Define a largura do botão*/
-  height: 49px; /* Define a altura do botão*/
-  text-align: center; /* Centraliza horizontalmente o texto dentro do botão */
-  line-height: 50px; /* Centraliza verticalmente o texto ao igualar ao valor da altura */
-  font-size: 16px; /* Define o tamanho da fonte do texto */
-}
-
-#numero:hover {
-  text-decoration: underline; /* Efeito de sublinhado ao passar o mouse */
-}
-
-
-
 
 .footer-bar {
-  font-size: 16px;
   background-color: #d9d9d9;
   color: blue;
-  position: absolute; /* Torna a posição do botão independente */
-  left: -5px; /* Define a distância do lado esquerdo */
-  top: 92px; /* Define a distância do topo */
-  width: 100%; /* Define a largura */
-  height: 45px; /* Define a altura */
-  text-align: center; /* Centraliza horizontalmente o texto */
-  line-height: 38px; /* Centraliza verticalmente o texto */
-  white-space: nowrap; /* Evita quebra de linha */
-  overflow: hidden; /* Garante que texto extra não quebre linhas */
-  border-left: #aaaaaa 5px solid;
-  border-right: #aaaaaa 5px solid;
+  overflow: hidden;
+  align-self: end;
+  height: 29%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 23%;
 }
 
-#footer-bar a {
-  text-decoration: none; /* Remove sublinhado */
-  color: inherit; /* Herda a cor do texto ao redor */
-  cursor: pointer; /* Mantém o cursor de "clicável" */
-  display: inline; /* Mantém os links na mesma linha */
+.footer-bar a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  display: inline;
 }
 
-#footer-bar a:hover {
-  text-decoration: underline; /* Adiciona sublinhado no hover */
+.footer-bar a:hover {
+  text-decoration: underline;
 }
-
 
 /* LOGIN */
 
@@ -343,7 +267,8 @@ body {
   height: var(--tamanho-login);
   background-size: cover;
   position: relative;
-  background-color: white;
+  background-image: url('../assets/imgs/fundoLoginCadastro.jpg');
+
 }
 
 .login::before {
@@ -369,10 +294,10 @@ body {
 .card {
   width: 50%;
   background: radial-gradient(circle,
-          #002B96 30%,
-          #002B78 60%,
-          #002b5c 100%); /*Degrade no fundo da tela*/
-  border: #002B96 5px solid;
+      #002b96a8 30%,
+      #002b7896 60%,
+      #002b5c7a 100%);
+  border: #002b9642 5px solid;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -381,6 +306,13 @@ body {
   flex-direction: column;
   height: fit-content;
   padding: 20px 0;
+  position: relative;
+  top: 8%;
+}
+
+.card-login {
+  position: relative;
+  top: 0%;
 }
 
 .card h2 {
@@ -402,11 +334,54 @@ body {
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  font-family: "Cinzel", serif;
+  font-weight: bold;
   text-align: center;
   border-radius: 10px;
   margin: 0;
+  padding: 10px;
+  border: 2px solid white;
+  background: radial-gradient(circle,
+      #002B96 30%,
+      #002B78 60%,
+      #002b5c 100%);
 }
+
+.formulario input::placeholder {
+  font-family: "Cinzel", serif;
+  font-weight: bold;
+  color: white;
+}
+
+.formulario input:focus {
+  font-family: "Cinzel", serif;
+  font-weight: bold;
+  background: white;
+  color: #002B96;
+}
+
+
+.iconeOlho1 {
+  position: absolute;
+  left: 81%;
+  top: 57%;
+  cursor: pointer;
+}
+
+.iconeOlho1Log {
+  position: absolute;
+  left: 81%;
+  top: 61%;
+  cursor: pointer;
+}
+
+.iconeOlho2 {
+  position: absolute;
+  left: 81%;
+  top: 74%;
+  cursor: pointer;
+}
+
 
 .formulario select {
   border: 2px solid #32b9cd;
@@ -427,17 +402,25 @@ body {
 
 .botao {
   cursor: pointer;
-  font-family: "Barlow", sans-serif;
-  border: 0;
+  font-family: "Cinzel", serif;
+  border: 1px solid;
   border-radius: 5px;
   font-weight: 600;
   font-size: 18px;
-  color: blue;;
-  background-color: white;
+  color: white;
+  background: radial-gradient(circle,
+      #002b96 30%,
+      #002b78 60%,
+      #002b5cfa 100%);
   width: 120px;
   height: 30px;
   align-self: center;
   margin-top: 20px;
+}
+
+.botao:hover {
+  background: white;
+  color: #002B96;
 }
 
 .loading-div {
@@ -463,14 +446,40 @@ body {
 
 .card_erro {
   display: none;
-  background-color: #fff;
-  color: black;
-  width: 230px;
-  position: fixed;
+  color: white;
+  width: auto;
+  position: absolute;
   border-radius: 4px;
-  border: #ED145B 3px solid;
+  margin-right: 3px;
   padding: 10px;
-  margin-right: 10%;
+  background: radial-gradient(circle,
+      #002b96a8 30%,
+      #002b7896 60%,
+      #002b5c7a 100%);
+  border: #002b9642 5px solid;
+  z-index: 2;
+  top: 40%;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.card_erro.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.card_erro span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.card_erro li {
+  font-size: 80%;
 }
 
 .card_erro #mensagem_erro {
@@ -488,16 +497,9 @@ body {
   flex-direction: column;
 }
 
-input {
-  margin-bottom: 10px;
-  border: 2px solid #32b9cd;
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
-}
 
 .btn {
-  font-family: "Barlow", sans-serif;
+  font-family: "Cinzel", serif;
   border: 0;
   border-radius: 5px;
   font-weight: 600;
@@ -510,15 +512,36 @@ input {
   margin-top: 5px;
 }
 
-.loading-div {
-  width: 50px;
-  margin: auto;
+.loading_card {
   display: none;
+  color: white;
+  width: auto;
+  position: absolute;
+  border-radius: 4px;
+  padding: 10px;
+  background: radial-gradient(circle,
+      #002b96a8 30%,
+      #002b7896 60%,
+      #002b5c7a 100%);
+  border: #002b9642 5px solid;
+  z-index: 2;
+  top: 33%;
+  left: 135%;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  align-items: center;
 }
 
-.loading-div img {
-  height: 50px;
-  width: 50px;
+.loading_card.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+.loading-img {
+  height: 82px;
+  margin-right: 20px;
 }
 
 /* SIMULADOR */

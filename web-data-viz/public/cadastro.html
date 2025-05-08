@@ -63,15 +63,18 @@
           <div class="campo">
             <span>Senha:</span>
             <input id="senha_input" type="password" placeholder="******" />
+            <img id="iconeOlho1" class="iconeOlho1" src="./assets/icon/iconeOlhoBrancoFechado.png" />
           </div>
           <div class="campo">
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
+            <img id="iconeOlho2" class="iconeOlho2" src="./assets/icon/iconeOlhoBrancoFechado.png" />
           </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
-        <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
+        <div id="div_aguardar" class="loading_card">
+          <img src="./assets/circle-loading.gif" class="loading-img">
+          <p style="margin-top: 10%;">Carregando...</p>
         </div>
 
         <div id="div_erros_login"></div>
@@ -80,27 +83,58 @@
   </div>
 
   <!--footer inicio-->
-  <footer class="footer">
-    <span id="email">saltweb.christianverse@gmail.com</span>
-    <span id="midias">Facebook | Instagram | LinkedIn</span>
-    <img class="icon-Facebook" src="./assets/icon/icon-Facebook.png">
-    <img class="icon-Instagram" src="./assets/icon/icon-Instagram.png">
-    <img class="icon-Linkedin" src="./assets/icon/icon-Linkedin.png">
-    <span id="numero">55 (11) 93186-0385</span>
-    <div class="footer-bar" id="footer-bar">[S.A.L.T] © [2025] | 
-      <a>Política de Privacidade</a> | 
-      <a>Termos de Uso</a> | 
-      Todos os direitos reservados.</div>
-  </footer>
+  <div class="footer">
+    <div class="footerbar">
+      <span class="redes">Facebook | Instagram | LinkedIn</span>
+      <div class="midias">
+
+        <span>Contato: &nbsp;<span class="contato">55 (11) 93186-0385</span></span>
+
+        <div class="icons-group">
+          <img class="icons" src="./assets/icon/icon-Facebook.png">
+          <img class="icons" src="./assets/icon/icon-Instagram.png">
+          <img class="icons" src="./assets/icon/icon-Linkedin.png">
+        </div>
+
+        <span>Email: &nbsp;<span class="contato">saltweb.christianverse@gmail.com</span></span>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bar">
+      [S.A.L.T] © [2025] |
+      <a>Política de Privacidade</a> |
+      <a>Termos de Uso</a> |
+      Todos os direitos reservados.
+    </div>
+  </div>
   <!--footer fim-->
 </body>
 
 </html>
+<script src="./js/geral.js"></script>
 
 <script>
 
   // Array para armazenar empresas cadastradas para validação de código de ativação 
   let listaEmpresasCadastradas = [];
+  var letras = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+    'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
+    'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+  ];
+
+  var numeros = [
+    '0', '1', '2', '3', '4',
+    '5', '6', '7', '8', '9'
+  ];
+
+  var caracteresEspeciais = [
+    '!', '@', '#', '$', '%', '¨', '&', '*', '(', ')', '-', '_',
+    '=', '+', '[', ']', '{', '}', '\\', '|', ';', ':', "'", '"',
+    ',', '<', '.', '>', '/', '?', '`', '~', '^'
+  ];
 
   function cadastrar() {
     // aguardar();
@@ -111,80 +145,134 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
     var idEmpresaVincular
 
-    // Verificando se há algum campo em branco
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
 
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
+    var senha = senhaVar.toLowerCase();
 
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
+    var temLetra = false;
+    var temNumero = false;
+    var temSimbolo = false;
+
+    for (var contador = 0; contador < senha.length; contador++) {
+      var caractere = senha[contador];
+
+      if (letras.includes(caractere)) {
+        temLetra = true;
+      }
+
+      if (numeros.includes(caractere)) {
+        temNumero = true;
+      }
+
+      if (caracteresEspeciais.includes(caractere)) {
+        temSimbolo = true;
       }
     }
 
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
+  
+  if (
+    nomeVar == "" ||
+    emailVar == "" ||
+    senhaVar == "" ||
+    confirmacaoSenhaVar == ""
+  ) {
+    cardErro.style.display = "block";
+    setTimeout(() => {
+      cardErro.style.opacity = "1";
+      cardErro.style.transform = "translateX(0)";
+    }, 10);
 
-        if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
-
+    mensagem_erro.innerHTML = `<span>ERRO!!!</span><br><li>Preencha todos os campos para se cadastrar</li>`;
+    finalizarAguardar();
     return false;
+
+  } else if (!emailVar.includes("@")) {
+    cardErro.style.display = "block";
+    setTimeout(() => {
+      cardErro.style.opacity = "1";
+      cardErro.style.transform = "translateX(0)";
+    }, 10);
+
+    mensagem_erro.innerHTML = `<span>ERRO!!!</span><br>Email invalido.<li>Verifique se o e-mail contém o símbolo “@”`;
+    finalizarAguardar();
+  } else if (senhaVar.length < 8) {
+    cardErro.style.display = "block";
+    setTimeout(() => {
+      cardErro.style.opacity = "1";
+      cardErro.style.transform = "translateX(0)";
+    }, 10);
+
+    mensagem_erro.innerHTML = `<span>ERRO!!!</span><br><li>A senha deve ter no mínimo 8 caracteres</li>`;
+    finalizarAguardar();
+    return false;
+  } else if (!temLetra || !temNumero || !temSimbolo) {
+
+    cardErro.style.display = "block";
+    setTimeout(() => {
+      cardErro.style.opacity = "1";
+      cardErro.style.transform = "translateX(0)";
+    }, 10);
+
+    mensagem_erro.innerHTML = `<span>ERRO!!!</span><br>A senha deve conter pelo menos <br>uma letra, um número e um simbolo</li>`;
+    finalizarAguardar();
+    return false;
+  } else if (confirmacaoSenhaVar != senhaVar) {
+    cardErro.style.display = "block";
+    setTimeout(() => {
+      cardErro.style.opacity = "1";
+      cardErro.style.transform = "translateX(0)";
+    }, 10);
+
+    mensagem_erro.innerHTML = `<span>ERRO!!!</span><br><li>Certifique-se de que os campos 'Senha'<br> e 'Confirmar Senha' sejam idênticos</li>`;
+    finalizarAguardar();
+    return false;
+  } else {
+
+    setInterval(sumirMensagem, 1000);
+  }
+
+
+  // Enviando o valor da nova input
+  fetch("/usuarios/cadastrar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      // crie um atributo que recebe o valor recuperado aqui
+      // Agora vá para o arquivo routes/usuario.js
+      nomeServer: nomeVar,
+      emailServer: emailVar,
+      senhaServer: senhaVar,
+      idEmpresaVincularServer: idEmpresaVincular
+    }),
+  })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        cardErro.style.display = "block";
+
+        mensagem_erro.innerHTML =
+          "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+        setTimeout(() => {
+          window.location = "login.html";
+        }, "2000");
+
+        limparFormulario();
+        finalizarAguardar();
+      } else {
+        throw "Houve um erro ao tentar realizar o cadastro!";
+      }
+    })
+    .catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+      finalizarAguardar();
+    });
+
+  return false;
   }
 
   // Listando empresas cadastradas 
