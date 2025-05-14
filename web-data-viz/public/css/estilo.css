@@ -453,9 +453,9 @@ body {
   margin-right: 3px;
   padding: 10px;
   background: radial-gradient(circle,
-      #002b96a8 30%,
-      #002b7896 60%,
-      #002b5c7a 100%);
+      #960000 30%,
+      #780000 60%,
+      #5c0000 100%);
   border: #002b9642 5px solid;
   z-index: 2;
   top: 40%;
