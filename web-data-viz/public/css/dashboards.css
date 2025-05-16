@@ -332,6 +332,24 @@ canvas {
   /* width: 100vw; */
 }
 
+#botao-menu {
+  position: fixed;
+  top: 50%;  
+  left: 0;
+  transform: translateY(-50%);
+  background-color: #32b9cd;
+  color: white;
+  padding: 10px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+#botao-menu:hover {
+  background-color: #32b9cd;
+}
+
 .header-left a {
   text-decoration: none;
   color: white;
