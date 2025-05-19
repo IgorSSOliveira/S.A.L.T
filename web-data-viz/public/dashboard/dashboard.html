@@ -2,24 +2,24 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="icon" href="../assets/icon/favicon-32x32.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <meta name="google" content="notranslate">
+
+
+    <title>S.A.L.T</title>
 
 
     <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
     <!-- <script src="../js/sessao.js"></script> -->
     <script src="./../js/alerta.js"></script>
-    <script src="./../js/geral.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cinzel:wght@400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
-    <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!--FONT AWESOME-->
@@ -29,56 +29,66 @@
 <!-- <body onload=" atualizarFeed()"> -->
 
 <body>
-    <div class="janela">
-        <div id="botao-menu">➤</div>
 
-        <div class="header-left" id="header-left">
-            <h1>AquaTech</h1>
 
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
+    <div class="header-left" id="header-left">
 
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
+        <div class="cruz"></div>
 
-            <div class="btn-nav">
+        <div class="hello">
+            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+        </div>
 
-                <h3>Gráficos</h3>
+        <div class="btn-nav-white">
+            <a href="./Biblia.html">
+                <h3>Bíblia</h3>
+            </a>
+        </div>
 
-            </div>
+        <div class="btn-nav">
 
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
+            <h3>Progresso</h3>
 
         </div>
 
-        <div class="dash">
-            <div id="alerta">
-            </div>
-
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
-            <div id="graficos">
-            </div>
+        <div class="btn-logout" onclick="limparSessao()">
+            <h3>Sair</h3>
         </div>
+
     </div>
+
+    <div class="dashboard">
+        <canvas id="graficoRosquinha"></canvas>
+    </div>
+    <div id="porcentagemCentro" class="porcentagemDash"></div>
+
+   <div id="progressoLeitura" class="progressoLeitura">
+  <h3>Progresso de Leitura</h3>
+  <div id="listaLivrosPrincipais" class="listaLivros"></div>
+  <button onclick="abrirPopup()" class="btnVerMais">Ver mais</button>
+</div>
+
+<!-- Popup -->
+<div id="popupTodosLivros" class="popup hidden">
+  <div class="popupConteudo">
+    <span class="fecharPopup" onclick="fecharPopup()">×</span>
+    <h4>Todos os Livros</h4>
+
+    <label class="toggleSemProgresso">
+      <input type="checkbox" id="ocultarSemProgresso" onchange="filtrarLivrosSemProgresso()" checked>
+      Ocultar livros sem progresso
+    </label>
+
+    <div id="todosLivros" class="listaLivros"></div>
+  </div>
+</div>
 
 
 </body>
 
 </html>
+
+<script src="../js/Dashboard.js"></script>
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;

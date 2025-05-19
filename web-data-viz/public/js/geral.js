@@ -69,20 +69,3 @@ configurarIconeOlho(
     "./assets/icon/iconeOlhoAzulFechado.png",
     "./assets/icon/iconeOlhoAzulaberto.png"
 );
-
-
-
-const botao = document.getElementById('botao-menu');
-const faixamenu = document.getElementById('header-left');
-
-botao.addEventListener('click', () => {
-  
-  faixamenu.classList.toggle('open');
-
-  if (faixamenu.classList.contains('open')) {
-    botao.textContent = '➤';
-  } else {
-    botao.textContent = '◀';
-  }
-
-});
