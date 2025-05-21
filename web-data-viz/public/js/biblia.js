@@ -71,7 +71,6 @@ const livros = [
 const livroSelect = document.getElementById('livro');
 const capituloSelect = document.getElementById('capitulo');
 const textoBiblico = document.getElementById('textoBiblico');
-const lerBtn = document.getElementById('lerBtn');
 
 // Preenche o select com os livros
 livros.forEach(livro => {
@@ -91,13 +90,18 @@ livroSelect.addEventListener('change', () => {
     option.textContent = i;
     capituloSelect.appendChild(option);
   }
+
+  // Seleciona o primeiro capítulo automaticamente ao mudar o livro
+  capituloSelect.selectedIndex = 0;
+
+  carregarTexto(); // Carrega versículos
 });
 
-// Carrega capítulos iniciais para o primeiro livro
-livroSelect.dispatchEvent(new Event('change'));
+// Quando o capítulo mudar, carrega o novo conteúdo
+capituloSelect.addEventListener('change', carregarTexto);
 
-// Botão para ler capítulo
-lerBtn.addEventListener('click', () => {
+// Função para buscar e mostrar os versículos
+function carregarTexto() {
   const livro = livroSelect.value;
   const capitulo = capituloSelect.value;
 
@@ -114,4 +118,8 @@ lerBtn.addEventListener('click', () => {
       console.error(error);
       textoBiblico.innerText = "Erro ao conectar com a API.";
     });
-});
+}
+
+// Inicia com Gênesis 1 já selecionado e carregado
+livroSelect.selectedIndex = 0; // Seleciona o primeiro livro
+livroSelect.dispatchEvent(new Event('change')); // Dispara evento pra preencher capítulos e carregar texto

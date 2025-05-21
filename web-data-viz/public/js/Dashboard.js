@@ -1,5 +1,5 @@
 // DASHBOARD BIBLIA
-const ctx = document.getElementById('graficoRosquinha').getContext('2d');
+const doughnut = document.getElementById('graficoRosquinha').getContext('2d');
 
 // Porcentagem que você quer mostrar
 const porcentagem = 72.5;
@@ -7,17 +7,19 @@ const porcentagem = 72.5;
 // Atualiza o texto no centro da rosquinha
 document.getElementById('porcentagemCentro').innerText = porcentagem + '%';
 
+const naoLido = 100 - porcentagem;
+
 const data = {
     labels: ['Lido', 'Não lido'],
     datasets: [{
-        data: [porcentagem, 100 - porcentagem],
+        data: [porcentagem, naoLido],
         backgroundColor: ['#50CF01', '#ddd'],
         borderWidth: 0
     }]
 };
 
 
-const grafico = new Chart(ctx, {
+const grafico = new Chart(doughnut, {
     type: 'doughnut',
     data: data,
     options: {
