@@ -28,7 +28,9 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body>
+<body class="body">
+
+    <img src="../assets/imgs/fundoDash.jpg" alt="" class="imagemdefundoDash">
 
 
     <div class="header-left" id="header-left">
@@ -36,7 +38,7 @@
         <div class="cruz"></div>
 
         <div class="hello">
-            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            <h3>Graça e paz, <span id="b_usuario">usuário</span>!</h3>
         </div>
 
         <div class="btn-nav-white">
@@ -57,31 +59,41 @@
 
     </div>
 
-    <div class="dashboard">
-        <canvas id="graficoRosquinha"></canvas>
+
+    <div class="painel-biblia-container">
+        
+        <div class="dashboard">
+            <h1 class="tituloProgresso">Progresso geral da Biblia</h1>
+            <canvas id="graficoRosquinha"></canvas>
+            <div id="porcentagemCentro" class="porcentagemDash"></div>
+        </div>
+
+        <div id="progressoLeitura" class="progressoLeitura">
+            <h3 class="titulo">Progresso de Leitura</h3>
+            <div id="listaLivrosPrincipais" class="listaLivros"></div>
+            <button onclick="abrirPopup()" class="btnVerMais">Ver mais</button>
+        </div>
     </div>
-    <div id="porcentagemCentro" class="porcentagemDash"></div>
 
-   <div id="progressoLeitura" class="progressoLeitura">
-  <h3>Progresso de Leitura</h3>
-  <div id="listaLivrosPrincipais" class="listaLivros"></div>
-  <button onclick="abrirPopup()" class="btnVerMais">Ver mais</button>
-</div>
 
-<!-- Popup -->
-<div id="popupTodosLivros" class="popup hidden">
-  <div class="popupConteudo">
-    <span class="fecharPopup" onclick="fecharPopup()">×</span>
-    <h4>Todos os Livros</h4>
 
-    <label class="toggleSemProgresso">
-      <input type="checkbox" id="ocultarSemProgresso" onchange="filtrarLivrosSemProgresso()" checked>
-      Ocultar livros sem progresso
-    </label>
 
-    <div id="todosLivros" class="listaLivros"></div>
-  </div>
-</div>
+    <!-- Popup -->
+    <div id="popupTodosLivros" class="popup hidden">
+        <div class="popupConteudo">
+            <span class="fecharPopup" onclick="fecharPopup()">×</span>
+            <h4>Todos os Livros</h4>
+
+            <label class="toggleSemProgresso">
+                <input type="checkbox" id="ocultarSemProgresso" onchange="filtrarLivrosSemProgresso()" checked>
+                Ocultar livros sem progresso
+            </label>
+
+            <div id="todosLivros" class="listaLivros"></div>
+        </div>
+    </div>
+
+
 
 
 </body>

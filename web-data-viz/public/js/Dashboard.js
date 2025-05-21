@@ -11,7 +11,7 @@ const data = {
     labels: ['Lido', 'Não lido'],
     datasets: [{
         data: [porcentagem, 100 - porcentagem],
-        backgroundColor: ['#4caf50', '#ddd'],
+        backgroundColor: ['#50CF01', '#ddd'],
         borderWidth: 0
     }]
 };
@@ -19,7 +19,16 @@ const data = {
 
 const grafico = new Chart(ctx, {
     type: 'doughnut',
-    data: data
+    data: data,
+    options: {
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'white'
+                }
+            }
+        }
+    }
 });
 
 

@@ -43,36 +43,80 @@ body {
 
 /* DASHBOARD */
 
+.imagemdefundoDash {
+  position: fixed;
+  left: 20%;
+  height: 101%;
+  width: 80%;
+}
 
-.porcentagemDash {
-  position: absolute;
-  z-index: 2;
-  left: 35%;
-  top: 45%;
+.painel-biblia-container {
+  position: relative;
+  background: radial-gradient(circle,
+      #002b96a8 30%,
+      #002b7896 60%,
+      #002b5c7a 100%);
+  border: #002b9642 5px solid;
+  padding: 40px;
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 8vh;
+  min-height: 70vh;
+  width: 68%;
+  left: 23.5%;
+  top: 9.5vh;
+}
+
+.painel-biblia {
+  background-color: #f0f4ff;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.tituloProgresso {
+  margin-top: -5%;
 }
 
 .dashboard {
   height: 60vh;
   width: 41vw;
-  position: absolute;
-  left: 25%;
-  top: 17%;
-}
-/* Caixa principal */
-.progressoLeitura {
-  background-color: #1c1c1c;
+  position: relative;
   color: white;
+}
+
+.porcentagemDash {
+  position: absolute;
+  left: 35.5%;
+  top: 60.5%;
+  transform: translate(-50%, -50%);
+  font-size: 8vh;
+  z-index: 2;
+  pointer-events: none;
+  color: white;
+}
+
+/* Caixa principal */
+
+.progressoLeitura {
+  background-color: #d9d9d9;
+  color: #002b5c;
   padding: 20px;
   border-radius: 12px;
+  border: 2px solid #002b5c;
   width: 350px;
-  font-family: Arial, sans-serif;
-  position: absolute;
-  top: 100px;
-  right: 50px;
+  font-family: "Cinzel", serif;
+  position: relative;
+
+}
+
+.titulo {
+  margin-bottom: 25px;
+  margin-top: 4px;
 }
 
 .listaLivros {
@@ -82,9 +126,13 @@ body {
 }
 
 .itemLivro {
-  background-color: #2c2c2c;
+  background: radial-gradient(circle,
+      #002B96 30%,
+      #002B78 60%,
+      #002b5c 100%);
   padding: 10px;
   border-radius: 8px;
+  color: white;
 }
 
 .nomeLivro {
@@ -101,7 +149,7 @@ body {
 
 .barraInterna {
   height: 100%;
-  background-color: #4caf50;
+  background-color: #50CF01;
   width: 0%;
   transition: width 0.3s ease;
 }
@@ -114,13 +162,19 @@ body {
 }
 
 .btnVerMais {
+  font-family: "Cinzel", serif;
   margin-top: 15px;
   padding: 8px 12px;
-  background-color: #333;
+  background: radial-gradient(circle,
+      #002B96 30%,
+      #002B78 60%,
+      #002b5c 100%);
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  width: 35%;
+  font-size: 82%;
 }
 
 .toggleSemProgresso {
@@ -150,13 +204,14 @@ body {
 }
 
 .popupConteudo {
-  background-color: #1c1c1c;
+  background-color: #d9d9d9;
   padding: 20px;
   border-radius: 10px;
+  border: 2px solid #002b5c;
   width: 400px;
   max-height: 80vh;
   overflow-y: auto;
-  color: white;
+  color: #002b5c;
   position: relative;
 }
 
@@ -266,4 +321,37 @@ body {
   margin-bottom: 7px;
   cursor: pointer;
   margin-top: 36px;
+}
+
+
+
+/* BIBLIA */
+
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+select,
+button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#textoBiblico {
+  margin-top: 20px;
+  white-space: pre-line;
 }
