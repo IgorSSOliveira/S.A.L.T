@@ -72,7 +72,6 @@ const livroSelect = document.getElementById('livro');
 const capituloSelect = document.getElementById('capitulo');
 const textoBiblico = document.getElementById('textoBiblico');
 
-// Preenche o select com os livros
 livros.forEach(livro => {
   const option = document.createElement('option');
   option.value = livro.id;
@@ -80,7 +79,6 @@ livros.forEach(livro => {
   livroSelect.appendChild(option);
 });
 
-// Atualiza capítulos quando o livro muda
 livroSelect.addEventListener('change', () => {
   capituloSelect.innerHTML = '';
   const livroSelecionado = livros.find(l => l.id === livroSelect.value);
@@ -91,16 +89,13 @@ livroSelect.addEventListener('change', () => {
     capituloSelect.appendChild(option);
   }
 
-  // Seleciona o primeiro capítulo automaticamente ao mudar o livro
   capituloSelect.selectedIndex = 0;
 
-  carregarTexto(); // Carrega versículos
+  carregarTexto();
 });
 
-// Quando o capítulo mudar, carrega o novo conteúdo
 capituloSelect.addEventListener('change', carregarTexto);
 
-// Função para buscar e mostrar os versículos
 function carregarTexto() {
   const livro = livroSelect.value;
   const capitulo = capituloSelect.value;
@@ -120,9 +115,9 @@ function carregarTexto() {
     });
 }
 
-// Inicia com Gênesis 1 já selecionado e carregado
-livroSelect.selectedIndex = 0; // Seleciona o primeiro livro
-livroSelect.dispatchEvent(new Event('change')); // Dispara evento pra preencher capítulos e carregar texto
+
+livroSelect.selectedIndex = 0;
+livroSelect.dispatchEvent(new Event('change'));
 
 
 const botaoAnterior = document.getElementById('anteriorCapitulo');
@@ -142,5 +137,24 @@ botaoProximo.addEventListener('click', () => {
   if (capAtual < livroSelecionado.capitulos) {
     capituloSelect.value = capAtual + 1;
     carregarTexto();
+  }
+});
+
+
+
+const btnMarcarLido = document.getElementById('btnMarcarLido');
+
+btnMarcarLido.addEventListener('click', () => {
+  btnMarcarLido.classList.toggle('marked');
+
+  
+  const pressed = btnMarcarLido.getAttribute('aria-pressed') === 'true';
+  btnMarcarLido.setAttribute('aria-pressed', String(!pressed));
+
+  
+  if (!pressed) {
+    btnMarcarLido.textContent = '✓ Lido';
+  } else {
+    btnMarcarLido.textContent = 'Marcar como lido';
   }
 });

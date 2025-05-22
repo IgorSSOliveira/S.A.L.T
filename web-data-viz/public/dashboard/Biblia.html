@@ -22,63 +22,65 @@
 
 <body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
 
-<div>
+  <div>
 
-  <div class="imagemdefundoBiblia"></div>
-  <div class="header-left dash-header">
+    <div class="imagemdefundoBiblia"></div>
+    <div class="header-left dash-header">
 
-    <div class="cruz"></div>
+      <div class="cruz"></div>
 
-    <div class="hello">
-      <h3>Graça e paz, <span id="b_usuario">usuário</span>!</h3>
-    </div>
-
-    <div class="btn-nav">
-      <h3>Bíblia</h3>
-    </div>
-
-    <div class="btn-nav-white">
-      <a href="./dashboard.html">
-        <h3>Progresso</h3>
-      </a>
-    </div>
-
-
-
-    <div class="btn-logout" onclick="limparSessao()">
-      <h3>Sair</h3>
-    </div>
-
-  </div>
-
-
-
-  <div class="container">
-    <h1 class="tituloBiblia">Biblia online</h1>
-
-    <div class="select-group">
-      <div>
-        <label for="livro">Livro:</label>
-        <select id="livro"></select>
+      <div class="hello">
+        <h3>Graça e paz, <span id="b_usuario">usuário</span>!</h3>
       </div>
 
-      <div>
-        <label for="capitulo">Capítulo:</label>
-        <select id="capitulo"></select>
+      <div class="btn-nav">
+        <h3>Bíblia</h3>
+      </div>
+
+      <div class="btn-nav-white">
+        <a href="./dashboard.html">
+          <h3>Progresso</h3>
+        </a>
+      </div>
+
+
+
+      <div class="btn-logout" onclick="limparSessao()">
+        <h3>Sair</h3>
+      </div>
+
+    </div>
+
+
+
+    <div class="container">
+      <h1 class="tituloBiblia">Biblia online</h1>
+
+      <div class="linha-de-controle">
+        <div>
+          <label for="livro">Livro:</label>
+          <select id="livro"></select>
+        </div>
+
+        <div class="capitulo-e-botao">
+          <div>
+            <label for="capitulo">Capítulo:</label>
+            <select id="capitulo"></select>
+          </div>
+
+          <button id="btnMarcarLido" aria-pressed="false">
+            ✓ Marcar como lido
+          </button>
+        </div>
+      </div>
+
+      <div id="textoBiblico"></div>
+
+      <div class="botoes-capitulo">
+        <button id="anteriorCapitulo">Capítulo Anterior</button>
+        <button id="proximoCapitulo">Próximo Capítulo</button>
       </div>
     </div>
-
-    <div id="textoBiblico"></div>
-    <div class="botoes-capitulo">
-
-      <button id="anteriorCapitulo">Capítulo Anterior</button>
-      <button id="proximoCapitulo">Próximo Capítulo</button>
-    </div>
-
-
-  </div>
-
-
 
 </body>
 

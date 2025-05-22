@@ -365,20 +365,6 @@ body {
   color: white;
 }
 
-.select-group {
-  display: flex;
-  gap: 5vw;
-  flex-wrap: wrap;
-  z-index: 2;
-}
-
-.select-group label,
-.select-group select {
-  flex: 1;
-  min-width: 150px;
-  font-family: "Cinzel", serif;
-  border-left: 4px #002B96 solid;
-}
 
 select {
   padding: 10px;
@@ -386,6 +372,8 @@ select {
   width: 100%;
   position: relative;
   z-index: 2;
+  font-family: "Cinzel", serif;
+  border: 2px #002B96 solid;
 }
 
 #textoBiblico {
@@ -441,4 +429,65 @@ select {
       #002B96 30%,
       #002B78 60%,
       #002b5c 100%);
+}
+
+.linha-de-controle {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 64vw;
+}
+
+/* Container para capitulo + botão */
+.capitulo-e-botao {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
+
+/* Botão com estilo e efeito */
+#btnMarcarLido {
+  margin-left: auto;
+  background-color: #fffcfc;
+  border: 2px solid #002B96;
+  color: #002B96;
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+  z-index: 2;
+}
+
+/* Hover */
+#btnMarcarLido:hover {
+  box-shadow: 0 0 8px #002B96;
+}
+
+/* Estado marcado */
+#btnMarcarLido.marked {
+  background-color: #50CF01;
+  color: white;
+  border-color: #389e00;
+  box-shadow: 0 0 15px #50CF01;
+  animation: pulseVerde 0.6s ease forwards;
+}
+
+/* Animação */
+@keyframes pulseVerde {
+  0% {
+    box-shadow: 0 0 15px #50CF01;
+  }
+
+  50% {
+    box-shadow: 0 0 30px #a8f068;
+  }
+
+  100% {
+    box-shadow: 0 0 15px #50CF01;
+  }
 }
