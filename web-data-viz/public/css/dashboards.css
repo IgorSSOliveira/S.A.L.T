@@ -327,31 +327,118 @@ body {
 
 /* BIBLIA */
 
-.container {
-  max-width: 600px;
-  margin: auto;
+.imagemdefundoBiblia {
+  position: fixed;
+  left: 20%;
+  height: 101%;
+  width: 80%;
+  background-image: url(../assets/imgs/fundoDash.jpg);
+  background-size: cover;
 }
 
-select,
-button {
-  width: 100%;
-  margin: 10px 0;
+.imagemdefundoBiblia::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(0 0 0 / 40%);
+  z-index: 1;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  font-family: "Cinzel", serif;
+  z-index: 2;
+}
+
+.tituloBiblia {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  left: 10vw;
+  font-size: 40px;
+  z-index: 2;
+  color: white;
+}
+
+.select-group {
+  display: flex;
+  gap: 5vw;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+.select-group label,
+.select-group select {
+  flex: 1;
+  min-width: 150px;
+  font-family: "Cinzel", serif;
+  border-left: 4px #002B96 solid;
+}
+
+select {
   padding: 10px;
   font-size: 16px;
-}
-
-button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
+  width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 #textoBiblico {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-left: 5px solid #002B96;
+  border-radius: 5px;
+  line-height: 1.8;
+  font-size: 17px;
+  width: 61vw;
+  position: relative;
+  z-index: 2;
+}
+
+#textoBiblico strong {
+  display: inline-block;
+  min-width: 30px;
+  color: #002B96;
+}
+
+.botoes-capitulo {
+  display: flex;
+  justify-content: space-between;
+  gap: 68%;
   margin-top: 20px;
-  white-space: pre-line;
+  width: 64vw;
+}
+
+.botoes-capitulo button {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  background: radial-gradient(circle,
+      #002B96 30%,
+      #002B78 60%,
+      #002b5c 100%);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.botoes-capitulo button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.botoes-capitulo button:hover:not(:disabled) {
+  background: radial-gradient(circle,
+      #002B96 30%,
+      #002B78 60%,
+      #002b5c 100%);
 }

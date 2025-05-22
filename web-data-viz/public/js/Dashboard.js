@@ -2,7 +2,7 @@
 const doughnut = document.getElementById('graficoRosquinha').getContext('2d');
 
 // Porcentagem que você quer mostrar
-const porcentagem = 72.5;
+const porcentagem = 50;
 
 // Atualiza o texto no centro da rosquinha
 document.getElementById('porcentagemCentro').innerText = porcentagem + '%';
@@ -43,7 +43,7 @@ const livros = [
     { nome: "Números", lidos: 0, total: 36 },
     { nome: "Deuteronômio", lidos: 0, total: 34 },
     { nome: "Josué", lidos: 0, total: 24 },
-    { nome: "Juízes", lidos: 0, total: 21 },
+    { nome: "Juízes", lidos: 21, total: 21 },
     { nome: "Rute", lidos: 0, total: 4 },
     { nome: "1 Samuel", lidos: 0, total: 31 },
     { nome: "2 Samuel", lidos: 0, total: 24 },

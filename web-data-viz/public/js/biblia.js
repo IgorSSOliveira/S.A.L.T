@@ -109,7 +109,7 @@ function carregarTexto() {
     .then(response => response.json())
     .then(data => {
       if (data.verses) {
-        textoBiblico.innerHTML = data.verses.map(v => `<strong>${v.verse}</strong> ${v.text}`).join('<br>');
+        textoBiblico.innerHTML = data.verses.map(v => `<strong>${v.verse}</strong> ${v.text}`).join('<br><br>');
       } else {
         textoBiblico.innerText = "Erro ao carregar capítulo.";
       }
@@ -123,3 +123,24 @@ function carregarTexto() {
 // Inicia com Gênesis 1 já selecionado e carregado
 livroSelect.selectedIndex = 0; // Seleciona o primeiro livro
 livroSelect.dispatchEvent(new Event('change')); // Dispara evento pra preencher capítulos e carregar texto
+
+
+const botaoAnterior = document.getElementById('anteriorCapitulo');
+const botaoProximo = document.getElementById('proximoCapitulo');
+
+botaoAnterior.addEventListener('click', () => {
+  const capAtual = parseInt(capituloSelect.value);
+  if (capAtual > 1) {
+    capituloSelect.value = capAtual - 1;
+    carregarTexto();
+  }
+});
+
+botaoProximo.addEventListener('click', () => {
+  const livroSelecionado = livros.find(l => l.id === livroSelect.value);
+  const capAtual = parseInt(capituloSelect.value);
+  if (capAtual < livroSelecionado.capitulos) {
+    capituloSelect.value = capAtual + 1;
+    carregarTexto();
+  }
+});
