@@ -1,70 +1,70 @@
 const livros = [
-  { nome: "Gênesis", id: "genesis", capitulos: 50 },
-  { nome: "Êxodo", id: "exodo", capitulos: 40 },
-  { nome: "Levítico", id: "levitico", capitulos: 27 },
-  { nome: "Números", id: "numeros", capitulos: 36 },
-  { nome: "Deuteronômio", id: "deuteronomio", capitulos: 34 },
-  { nome: "Josué", id: "josue", capitulos: 24 },
-  { nome: "Juízes", id: "juizes", capitulos: 21 },
-  { nome: "Rute", id: "rute", capitulos: 4 },
-  { nome: "1 Samuel", id: "1samuel", capitulos: 31 },
-  { nome: "2 Samuel", id: "2samuel", capitulos: 24 },
-  { nome: "1 Reis", id: "1reis", capitulos: 22 },
-  { nome: "2 Reis", id: "2reis", capitulos: 25 },
-  { nome: "1 Crônicas", id: "1cronicas", capitulos: 29 },
-  { nome: "2 Crônicas", id: "2cronicas", capitulos: 36 },
-  { nome: "Esdras", id: "esdras", capitulos: 10 },
-  { nome: "Neemias", id: "neemias", capitulos: 13 },
-  { nome: "Ester", id: "ester", capitulos: 10 },
-  { nome: "Jó", id: "jo", capitulos: 42 },
-  { nome: "Salmos", id: "salmos", capitulos: 150 },
-  { nome: "Provérbios", id: "proverbios", capitulos: 31 },
-  { nome: "Eclesiastes", id: "eclesiastes", capitulos: 12 },
-  { nome: "Cânticos", id: "canticos", capitulos: 8 },
-  { nome: "Isaías", id: "isaias", capitulos: 66 },
-  { nome: "Jeremias", id: "jeremias", capitulos: 52 },
-  { nome: "Lamentações", id: "lamentacoes", capitulos: 5 },
-  { nome: "Ezequiel", id: "ezequiel", capitulos: 48 },
-  { nome: "Daniel", id: "daniel", capitulos: 12 },
-  { nome: "Oseias", id: "oseias", capitulos: 14 },
-  { nome: "Joel", id: "joel", capitulos: 3 },
-  { nome: "Amós", id: "amos", capitulos: 9 },
-  { nome: "Obadias", id: "obadias", capitulos: 1 },
-  { nome: "Jonas", id: "jonas", capitulos: 4 },
-  { nome: "Miquéias", id: "miqueias", capitulos: 7 },
-  { nome: "Naum", id: "naum", capitulos: 3 },
-  { nome: "Habacuque", id: "habacuque", capitulos: 3 },
-  { nome: "Sofonias", id: "sofonias", capitulos: 3 },
-  { nome: "Ageu", id: "ageu", capitulos: 2 },
-  { nome: "Zacarias", id: "zacarias", capitulos: 14 },
-  { nome: "Malaquias", id: "malaquias", capitulos: 4 },
-  { nome: "Mateus", id: "mateus", capitulos: 28 },
-  { nome: "Marcos", id: "marcos", capitulos: 16 },
-  { nome: "Lucas", id: "lucas", capitulos: 24 },
-  { nome: "João", id: "joao", capitulos: 21 },
-  { nome: "Atos", id: "atos", capitulos: 28 },
-  { nome: "Romanos", id: "romanos", capitulos: 16 },
-  { nome: "1 Coríntios", id: "1corintios", capitulos: 16 },
-  { nome: "2 Coríntios", id: "2corintios", capitulos: 13 },
-  { nome: "Gálatas", id: "galatas", capitulos: 6 },
-  { nome: "Efésios", id: "efesios", capitulos: 6 },
-  { nome: "Filipenses", id: "filipenses", capitulos: 4 },
-  { nome: "Colossenses", id: "colossenses", capitulos: 4 },
-  { nome: "1 Tessalonicenses", id: "1tessalonicenses", capitulos: 5 },
-  { nome: "2 Tessalonicenses", id: "2tessalonicenses", capitulos: 3 },
-  { nome: "1 Timóteo", id: "1timoteo", capitulos: 6 },
-  { nome: "2 Timóteo", id: "2timoteo", capitulos: 4 },
-  { nome: "Tito", id: "tito", capitulos: 3 },
-  { nome: "Filemom", id: "filemom", capitulos: 1 },
-  { nome: "Hebreus", id: "hebreus", capitulos: 13 },
-  { nome: "Tiago", id: "tiago", capitulos: 5 },
-  { nome: "1 Pedro", id: "1pedro", capitulos: 5 },
-  { nome: "2 Pedro", id: "2pedro", capitulos: 3 },
-  { nome: "1 João", id: "1joao", capitulos: 5 },
-  { nome: "2 João", id: "2joao", capitulos: 1 },
-  { nome: "3 João", id: "3joao", capitulos: 1 },
-  { nome: "Judas", id: "judas", capitulos: 1 },
-  { nome: "Apocalipse", id: "apocalipse", capitulos: 22 }
+  { nome: "Gênesis", id: "Gênesis", capitulos: 50 },
+  { nome: "Êxodo", id: "Êxodo", capitulos: 40 },
+  { nome: "Levítico", id: "Levítico", capitulos: 27 },
+  { nome: "Números", id: "Números", capitulos: 36 },
+  { nome: "Deuteronômio", id: "Deuteronômio", capitulos: 34 },
+  { nome: "Josué", id: "Josué", capitulos: 24 },
+  { nome: "Juízes", id: "Juízes", capitulos: 21 },
+  { nome: "Rute", id: "Rute", capitulos: 4 },
+  { nome: "1 Samuel", id: "1 Samuel", capitulos: 31 },
+  { nome: "2 Samuel", id: "2 Samuel", capitulos: 24 },
+  { nome: "1 Reis", id: "1 Reis", capitulos: 22 },
+  { nome: "2 Reis", id: "2 Reis", capitulos: 25 },
+  { nome: "1 Crônicas", id: "1 Crônicas", capitulos: 29 },
+  { nome: "2 Crônicas", id: "2 Crônicas", capitulos: 36 },
+  { nome: "Esdras", id: "Esdras", capitulos: 10 },
+  { nome: "Neemias", id: "Neemias", capitulos: 13 },
+  { nome: "Ester", id: "Ester", capitulos: 10 },
+  { nome: "Jó", id: "Jó", capitulos: 42 },
+  { nome: "Salmos", id: "Salmos", capitulos: 150 },
+  { nome: "Provérbios", id: "Provérbios", capitulos: 31 },
+  { nome: "Eclesiastes", id: "Eclesiastes", capitulos: 12 },
+  { nome: "Cânticos", id: "Cânticos", capitulos: 8 },
+  { nome: "Isaías", id: "Isaías", capitulos: 66 },
+  { nome: "Jeremias", id: "Jeremias", capitulos: 52 },
+  { nome: "Lamentações", id: "Lamentações", capitulos: 5 },
+  { nome: "Ezequiel", id: "Ezequiel", capitulos: 48 },
+  { nome: "Daniel", id: "Daniel", capitulos: 12 },
+  { nome: "Oseias", id: "Oseias", capitulos: 14 },
+  { nome: "Joel", id: "Joel", capitulos: 3 },
+  { nome: "Amós", id: "Amós", capitulos: 9 },
+  { nome: "Obadias", id: "Obadias", capitulos: 1 },
+  { nome: "Jonas", id: "Jonas", capitulos: 4 },
+  { nome: "Miquéias", id: "Miquéias", capitulos: 7 },
+  { nome: "Naum", id: "Naum", capitulos: 3 },
+  { nome: "Habacuque", id: "Habacuque", capitulos: 3 },
+  { nome: "Sofonias", id: "Sofonias", capitulos: 3 },
+  { nome: "Ageu", id: "Ageu", capitulos: 2 },
+  { nome: "Zacarias", id: "Zacarias", capitulos: 14 },
+  { nome: "Malaquias", id: "Malaquias", capitulos: 4 },
+  { nome: "Mateus", id: "Mateus", capitulos: 28 },
+  { nome: "Marcos", id: "Marcos", capitulos: 16 },
+  { nome: "Lucas", id: "Lucas", capitulos: 24 },
+  { nome: "João", id: "João", capitulos: 21 },
+  { nome: "Atos", id: "Atos", capitulos: 28 },
+  { nome: "Romanos", id: "Romanos", capitulos: 16 },
+  { nome: "1 Coríntios", id: "1 Coríntios", capitulos: 16 },
+  { nome: "2 Coríntios", id: "2 Coríntios", capitulos: 13 },
+  { nome: "Gálatas", id: "Gálatas", capitulos: 6 },
+  { nome: "Efésios", id: "Efésios", capitulos: 6 },
+  { nome: "Filipenses", id: "Filipenses", capitulos: 4 },
+  { nome: "Colossenses", id: "Colossenses", capitulos: 4 },
+  { nome: "1 Tessalonicenses", id: "1 Tessalonicenses", capitulos: 5 },
+  { nome: "2 Tessalonicenses", id: "2 Tessalonicenses", capitulos: 3 },
+  { nome: "1 Timóteo", id: "1 Timóteo", capitulos: 6 },
+  { nome: "2 Timóteo", id: "2 Timóteo", capitulos: 4 },
+  { nome: "Tito", id: "Tito", capitulos: 3 },
+  { nome: "Filemom", id: "Filemom", capitulos: 1 },
+  { nome: "Hebreus", id: "Hebreus", capitulos: 13 },
+  { nome: "Tiago", id: "Tiago", capitulos: 5 },
+  { nome: "1 Pedro", id: "1 Pedro", capitulos: 5 },
+  { nome: "2 Pedro", id: "2 Pedro", capitulos: 3 },
+  { nome: "1 João", id: "1 João", capitulos: 5 },
+  { nome: "2 João", id: "2 João", capitulos: 1 },
+  { nome: "3 João", id: "3 João", capitulos: 1 },
+  { nome: "Judas", id: "Judas", capitulos: 1 },
+  { nome: "Apocalipse", id: "Apocalipse", capitulos: 22 }
 ];
 
 
@@ -99,6 +99,7 @@ capituloSelect.addEventListener('change', carregarTexto);
 function carregarTexto() {
   const livro = livroSelect.value;
   const capitulo = capituloSelect.value;
+  const chave = `${livro}-${capitulo}`;
 
   fetch(`https://bible-api.com/${livro}+${capitulo}?translation=almeida`)
     .then(response => response.json())
@@ -108,12 +109,19 @@ function carregarTexto() {
       } else {
         textoBiblico.innerText = "Erro ao carregar capítulo.";
       }
+
+      // Atualiza botão de "lido"
+      const jaLido = capitulosLidos.has(chave);
+      btnMarcarLido.textContent = jaLido ? '✓ Lido' : 'Marcar como lido';
+      btnMarcarLido.setAttribute('aria-pressed', String(jaLido));
+      btnMarcarLido.classList.toggle('marked', jaLido);
     })
     .catch(error => {
       console.error(error);
       textoBiblico.innerText = "Erro ao conectar com a API.";
     });
 }
+
 
 
 livroSelect.selectedIndex = 0;
@@ -142,19 +150,29 @@ botaoProximo.addEventListener('click', () => {
 
 
 
-const btnMarcarLido = document.getElementById('btnMarcarLido');
+const capitulosLidos = new Set();
+
 
 btnMarcarLido.addEventListener('click', () => {
-  btnMarcarLido.classList.toggle('marked');
+  const livro = livroSelect.value;
+  const capitulo = capituloSelect.value;
+  const chave = `${livro}-${capitulo}`;
 
-  
-  const pressed = btnMarcarLido.getAttribute('aria-pressed') === 'true';
-  btnMarcarLido.setAttribute('aria-pressed', String(!pressed));
+  const jaLido = capitulosLidos.has(chave);
 
-  
-  if (!pressed) {
-    btnMarcarLido.textContent = '✓ Lido';
-  } else {
+  if (jaLido) {
+    capitulosLidos.delete(chave);
     btnMarcarLido.textContent = 'Marcar como lido';
+    btnMarcarLido.setAttribute('aria-pressed', 'false');
+    btnMarcarLido.classList.remove('marked');
+  } else {
+    capitulosLidos.add(chave);
+    btnMarcarLido.textContent = '✓ Lido';
+    btnMarcarLido.setAttribute('aria-pressed', 'true');
+    btnMarcarLido.classList.add('marked');
+
+    // Aqui você pode salvar no banco: livro e capitulo
+    console.log('Salvar no banco:', livro, capitulo);
   }
 });
+
