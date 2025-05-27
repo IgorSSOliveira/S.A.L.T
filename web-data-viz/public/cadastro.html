@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<body onload="listar()">
+<body>
 
   <!--header inicio-->
 
@@ -118,7 +118,6 @@
 <script>
 
   // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
   var letras = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
     'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
@@ -145,8 +144,6 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var idEmpresaVincular
-
 
     var senha = senhaVar.toLowerCase();
 
@@ -187,6 +184,7 @@
       finalizarAguardar();
       return false;
 
+
     } else if (nomeVar.length > 255) {
       cardErro.style.display = "block";
       setTimeout(() => {
@@ -197,6 +195,8 @@
       mensagem_erro.innerHTML = `<span>ERRO!!!</span><br><li>O nome não pode ultrapassar 255 caracteres</li>`;
       finalizarAguardar();
       return false;
+
+
     } else if (emailVar.length > 255) {
       cardErro.style.display = "block";
       setTimeout(() => {
@@ -207,6 +207,8 @@
       mensagem_erro.innerHTML = `<span>ERRO!!!</span><br><li>O e-mail não pode ultrapassar 255 caracteres</li>`;
       finalizarAguardar();
       return false;
+
+
     } else if (senhaVar.length > 20) {
       cardErro.style.display = "block";
       setTimeout(() => {
@@ -217,6 +219,8 @@
       mensagem_erro.innerHTML = `<span>ERRO!!!</span><br><li>A senha não pode ultrapassar 20 caracteres</li>`;
       finalizarAguardar();
       return false;
+
+
     } else if (!emailVar.includes("@")) {
       cardErro.style.display = "block";
       setTimeout(() => {
@@ -226,6 +230,8 @@
 
       mensagem_erro.innerHTML = `<span>ERRO!!!</span><br>Email invalido.<li>Verifique se o e-mail contém o símbolo “@”`;
       finalizarAguardar();
+
+
     } else if (senhaVar.length < 8) {
       cardErro.style.display = "block";
       setTimeout(() => {
@@ -236,8 +242,9 @@
       mensagem_erro.innerHTML = `<span>ERRO!!!</span><br><li>A senha deve ter no mínimo 8 caracteres</li>`;
       finalizarAguardar();
       return false;
-    } else if (!temLetra || !temNumero || !temSimbolo) {
 
+
+    } else if (!temLetra || !temNumero || !temSimbolo) {
       cardErro.style.display = "block";
       setTimeout(() => {
         cardErro.style.opacity = "1";
@@ -247,6 +254,8 @@
       mensagem_erro.innerHTML = `<span>ERRO!!!</span><br>A senha deve conter pelo menos <br>uma letra, um número e um simbolo</li>`;
       finalizarAguardar();
       return false;
+
+
     } else if (confirmacaoSenhaVar != senhaVar) {
       cardErro.style.display = "block";
       setTimeout(() => {
@@ -257,6 +266,8 @@
       mensagem_erro.innerHTML = `<span>ERRO!!!</span><br><li>Certifique-se de que os campos 'Senha'<br> e 'Confirmar Senha' sejam idênticos</li>`;
       finalizarAguardar();
       return false;
+
+
     } else {
       setInterval(sumirMensagem, 1000);
     }
@@ -273,8 +284,7 @@
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
-        senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
+        senhaServer: senhaVar
       }),
     })
       .then(function (resposta) {
@@ -297,34 +307,14 @@
         }
       })
       .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
+        console.log(`#ERRO: ${resposta} `);
         finalizarAguardar();
       });
 
     return false;
   }
 
-  // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
-
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
-
   function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
+        cardErro.style.display = "none"
+    }
 </script>

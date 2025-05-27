@@ -1,62 +1,131 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
-
-/*
-comandos para mysql server
-*/
-
-CREATE DATABASE aquatech;
-
-USE aquatech;
-
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14),
-	codigo_ativacao VARCHAR(50)
-);
+USE salt;
 
 CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+CREATE TABLE Livro(
+id INT PRIMARY KEY AUTO_INCREMENT, 
+nome VARCHAR (100) NOT NULL,
+qtdCapitulos INT
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+CREATE TABLE Leitura (
+fkUsuario INT,
+fkLivro INT,
+Livro VARCHAR(100),
+capítulo INT,
+CONSTRAINT pkLeitura 
+	PRIMARY KEY (fkUsuario, fkLivro),
+CONSTRAINT fkUsuarioLeitura 
+	FOREIGN KEY (fkUsuario) 
+		REFERENCES usuario(id),
+CONSTRAINT fkLivroLeitura 
+	FOREIGN KEY (fkLivro) 
+		REFERENCES Livro(id)
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
 
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
+INSERT INTO Livro (nome, qtdCapitulos)
+VALUES
+('Gênesis', 50),
+('Êxodo', 40),
+('Levítico', 27),
+('Números', 36),
+('Deuteronômio', 34),
+('Josué', 24),
+('Juízes', 21),
+('Rute', 4),
+('1 Samuel', 31),
+('2 Samuel', 24),
+('1 Reis', 22),
+('2 Reis', 25),
+('1 Crônicas', 29),
+('2 Crônicas', 36),
+('Esdras', 10),
+('Neemias', 13),
+('Ester', 10),
+('Jó', 42),
+('Salmos', 150),
+('Provérbios', 31),
+('Eclesiastes', 12),
+('Cânticos', 8),
+('Isaías', 66),
+('Jeremias', 52),
+('Lamentações', 5),
+('Ezequiel', 48),
+('Daniel', 12),
+('Oséias', 14),
+('Joel', 3),
+('Amós', 9),
+('Obadias', 1),
+('Jonas', 4),
+('Miquéias', 7),
+('Naum', 3),
+('Habacuque', 3),
+('Sofonias', 3),
+('Ageu', 2),
+('Zacarias', 14),
+('Malaquias', 4),
+('Mateus', 28),
+('Marcos', 16),
+('Lucas', 24),
+('João', 21),
+('Atos', 28),
+('Romanos', 16),
+('1 Coríntios', 16),
+('2 Coríntios', 13),
+('Gálatas', 6),
+('Efésios', 6),
+('Filipenses', 4),
+('Colossenses', 4),
+('1 Tessalonicenses', 5),
+('2 Tessalonicenses', 3),
+('1 Timóteo', 6),
+('2 Timóteo', 4),
+('Tito', 3),
+('Filemom', 1),
+('Hebreus', 13),
+('Tiago', 5),
+('1 Pedro', 5),
+('2 Pedro', 3),
+('1 João', 5),
+('2 João', 1),
+('3 João', 1),
+('Judas', 1),
+('Apocalipse', 22);
 
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
+
+
+CREATE VIEW view_biblia AS
+SELECT 
+    u.id AS usuario_id,
+    ROUND(
+        COUNT(DISTINCT le.fkLivro, le.capítulo) * 100.0 / (SELECT SUM(qtdCapitulos) FROM Livro),
+        3
+    ) AS porcentagem_lida
+FROM 
+    usuario u
+LEFT JOIN 
+    Leitura le ON u.id = le.fkUsuario
+GROUP BY 
+    u.id;
+    
+
+
+CREATE VIEW view_livro AS
+SELECT
+    le.fkUsuario,
+    l.nome,
+    l.qtdCapitulos AS total,
+    COUNT(le.capítulo) AS lidos,
+    ROUND((COUNT(le.capítulo) * 100.0) / l.qtdCapitulos, 2) AS progresso
+FROM Livro l
+LEFT JOIN Leitura le ON l.id = le.fkLivro
+GROUP BY le.fkUsuario, l.id, l.nome, l.qtdCapitulos
+ORDER BY progresso DESC;
+
+select * from usuario;

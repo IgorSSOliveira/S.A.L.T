@@ -340,6 +340,7 @@ body {
   border-radius: 10px;
   margin: 0;
   padding: 10px;
+  color: white;
   border: 2px solid white;
   background: radial-gradient(circle,
       #002B96 30%,
