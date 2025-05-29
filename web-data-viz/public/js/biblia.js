@@ -157,6 +157,7 @@ btnMarcarLido.addEventListener('click', () => {
   const livro = livroSelect.value;
   const capitulo = capituloSelect.value;
   const chave = `${livro}-${capitulo}`;
+  const idUsuario = sessionStorage.ID_USUARIO;
 
   const jaLido = capitulosLidos.has(chave);
 
@@ -171,8 +172,29 @@ btnMarcarLido.addEventListener('click', () => {
     btnMarcarLido.setAttribute('aria-pressed', 'true');
     btnMarcarLido.classList.add('marked');
 
-    // Aqui você pode salvar no banco: livro e capitulo
-    console.log('Salvar no banco:', livro, capitulo);
+    // Envia para o backend com ID do usuário
+    fetch("/dashboard/inserirLeitura", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        idUsuario: idUsuario,
+        livro: livro,
+        capitulo: capitulo
+      })
+    })
+    .then(res => {
+      if (res.ok) {
+        console.log("Leitura registrada com sucesso!");
+      } else {
+        console.error("Erro ao registrar leitura");
+      }
+    })
+    .catch(err => {
+      console.error("Erro de conexão ao registrar leitura:", err);
+    });
   }
 });
+
 
