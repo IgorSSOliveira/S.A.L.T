@@ -24,10 +24,10 @@ function BuscarProgressoLivros(id) {
 
 
 
-async function InserirLeitura(fkUsuario, nomeLivro, capitulo) {
+async function inserirLeitura(fkUsuario, nomeLivro, capitulo) {
     // 1. Buscar o ID do livro pelo nome
     const buscarIdLivroSql = `
-        SELECT idLivro FROM Livro WHERE nome = '${nomeLivro}';
+        SELECT id FROM Livro WHERE nome = '${nomeLivro}';
     `;
 
     try {
@@ -36,7 +36,7 @@ async function InserirLeitura(fkUsuario, nomeLivro, capitulo) {
             throw new Error("Livro não encontrado");
         }
 
-        const fkLivro = resultado[0].idLivro;
+        const fkLivro = resultado[0].id;
 
         // 2. Inserir leitura com fkLivro
         const inserirSql = `
@@ -57,5 +57,5 @@ async function InserirLeitura(fkUsuario, nomeLivro, capitulo) {
 module.exports = {
     BuscarprogressoBiblia,
     BuscarProgressoLivros,
-    InserirLeitura
+    inserirLeitura
 };

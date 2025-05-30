@@ -184,16 +184,16 @@ btnMarcarLido.addEventListener('click', () => {
         capitulo: capitulo
       })
     })
-    .then(res => {
-      if (res.ok) {
-        console.log("Leitura registrada com sucesso!");
-      } else {
-        console.error("Erro ao registrar leitura");
-      }
-    })
-    .catch(err => {
-      console.error("Erro de conexão ao registrar leitura:", err);
-    });
+      .then(res => {
+        if (res.ok) {
+          console.log("Leitura registrada com sucesso!");
+        } else {
+          console.error("Erro ao registrar leitura");
+        }
+      })
+      .catch(err => {
+        console.error("Erro de conexão ao registrar leitura:", err);
+      });
   }
 });
 
