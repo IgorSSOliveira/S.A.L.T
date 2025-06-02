@@ -102,32 +102,36 @@ VALUES
 
 
 CREATE OR REPLACE VIEW view_biblia AS
-SELECT 
-    u.id AS fkUsuario,
-    ROUND(
-        COUNT(DISTINCT le.fkLivro, le.capítulo) * 100.0 / (SELECT SUM(qtdCapitulos) FROM Livro),
-        3
-    ) AS progresso
-FROM 
-    usuario u
-LEFT JOIN 
-    Leitura le ON u.id = le.fkUsuario
-GROUP BY 
-    u.id;
+	SELECT 
+		u.id AS fkUsuario,
+		ROUND(
+			COUNT(DISTINCT le.fkLivro, le.capítulo) * 100.0 / (SELECT SUM(qtdCapitulos) FROM Livro),
+            3) AS progresso
+	FROM usuario u
+	LEFT JOIN Leitura le 
+		ON u.id = le.fkUsuario
+	GROUP BY u.id;
+    
 
-
-
+CREATE VIEW view_lido AS
+	SELECT 
+		Livro, 
+		capítulo
+    FROM Leitura;
+    
 CREATE VIEW view_livro AS
-SELECT
-    le.fkUsuario,
-    l.nome,
-    l.qtdCapitulos AS total,
-    COUNT(le.capítulo) AS lidos,
-    ROUND((COUNT(le.capítulo) * 100.0) / l.qtdCapitulos, 2) AS progresso
-FROM Livro l
-LEFT JOIN Leitura le ON l.id = le.fkLivro
-GROUP BY le.fkUsuario, l.id, l.nome, l.qtdCapitulos
-ORDER BY progresso DESC;
+	SELECT
+		u.id AS fkUsuario,
+		l.nome,
+		l.qtdCapitulos AS total,
+		COUNT(le.capítulo) AS lidos,
+		ROUND((COUNT(le.capítulo) * 100.0) / l.qtdCapitulos, 2) AS progresso
+	FROM usuario u
+		CROSS JOIN Livro l
+		LEFT JOIN Leitura le ON le.fkUsuario = u.id AND le.fkLivro = l.id
+	GROUP BY u.id, l.id, l.nome, l.qtdCapitulos
+	ORDER BY progresso DESC;
+
 
 
 
