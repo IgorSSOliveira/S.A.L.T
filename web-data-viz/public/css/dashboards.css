@@ -143,7 +143,8 @@ body {
 .containerRegistro {
   flex-direction: row;
   display: flex;
-  gap: 13.5vw;
+  width: 100%;
+  justify-content: space-between;
 }
 
 
@@ -170,7 +171,7 @@ body {
   font-size: 12px;
   margin-top: 5px;
   text-align: right;
-  color: #ccc;
+  color: white;
 }
 
 .btnVerMais {

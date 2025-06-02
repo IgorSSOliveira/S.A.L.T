@@ -32,14 +32,30 @@ async function inserirLeitura(fkUsuario, nomeLivro, capitulo) {
 
 function obterProgresso(idUsuario) {
     const instrucaoSql =
-        `SELECT * FROM view_biblia WHERE fkUsuario = ${idUsuario};`;
+        `SELECT * FROM view_biblia WHERE fkUsuario = ${idUsuario};
+    `;
     return database.executar(instrucaoSql);
 }
 
 function listarLivrosComProgresso(idUsuario) {
     const instrucaoSql = `
-        SELECT * FROM view_livro WHERE fkUsuario = ${idUsuario};`;
+        SELECT * FROM view_livro WHERE fkUsuario = ${idUsuario};
+    `;
     return database.executar(instrucaoSql);
+}
+
+function listarCapitulosLidos(idUsuario) {
+  const instrucaoSql = `
+    SELECT * FROM view_lido WHERE fkUsuario = ${idUsuario};
+`;
+  return database.executar(instrucaoSql);
+}
+
+function removerLeitura(idUsuario, livro, capitulo) {
+  const instrucaoSql = `
+    DELETE FROM Leitura WHERE fkUsuario = ${idUsuario} AND Livro = '${livro}' AND capítulo = ${capitulo};
+`;
+  return database.executar(instrucaoSql);
 }
 
 
@@ -48,5 +64,7 @@ function listarLivrosComProgresso(idUsuario) {
 module.exports = {
     inserirLeitura,
     obterProgresso,
-    listarLivrosComProgresso
+    listarLivrosComProgresso,
+    listarCapitulosLidos,
+    removerLeitura
 };

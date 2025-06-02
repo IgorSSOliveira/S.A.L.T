@@ -29,17 +29,42 @@ function obterProgresso(req, res) {
     });
 }
 
-function listarLivros(req, res) {
-    const idUsuario = req.params.idUsuario;
 
-    DashboardModel.listarLivrosComProgresso(idUsuario)
-        .then(resultado => {
-            res.json(resultado);
-        })
-        .catch(erro => {
-            console.error("Erro ao listar livros:", erro);
-            res.status(500).json(erro.sqlMessage || erro.message);
-        });
+function listarLivros(req, res) {
+  const idUsuario = req.params.idUsuario;
+
+  DashboardModel.listarLivrosComProgresso(idUsuario)
+    .then(resultado => {
+      res.json(resultado);
+    })
+    .catch(erro => {
+      console.error("Erro ao listar livros:", erro);
+      res.status(500).json(erro.sqlMessage || erro.message);
+    });
+}
+
+
+function listarCapitulosLidos(req, res) {
+  const idUsuario = req.params.idUsuario;
+
+  DashboardModel.listarCapitulosLidos(idUsuario)
+    .then(resultado => res.json(resultado))
+    .catch(erro => {
+      console.error("Erro ao listar capítulos lidos:", erro);
+      res.status(500).json(erro.sqlMessage || erro.message);
+    });
+}
+
+
+function removerLeitura(req, res) {
+  const { idUsuario, livro, capitulo } = req.body;
+
+  DashboardModel.removerLeitura(idUsuario, livro, capitulo)
+    .then(() => res.sendStatus(204))
+    .catch(erro => {
+      console.error("Erro ao remover leitura:", erro);
+      res.status(500).json(erro.sqlMessage || erro.message);
+    });
 }
 
 
@@ -47,5 +72,7 @@ function listarLivros(req, res) {
 module.exports = {
   inserirLeitura,
   obterProgresso,
-  listarLivros
+  listarLivros,
+  listarCapitulosLidos,
+  removerLeitura
 };

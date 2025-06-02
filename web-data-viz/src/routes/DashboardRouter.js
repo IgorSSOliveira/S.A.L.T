@@ -12,13 +12,19 @@ router.post("/inserirLeitura", function (req, res) {
 
 
 router.get("/progresso/:idUsuario", function (req, res) {
-    DashboardController.obterProgresso(req, res);
+  DashboardController.obterProgresso(req, res);
 });
 
 router.get("/livros/:idUsuario", function (req, res) {
-    DashboardController.listarLivros(req, res);
+  DashboardController.listarLivros(req, res);
 });
 
+router.get("/capitulos-lidos/:idUsuario", function (req, res) {
+  DashboardController.listarCapitulosLidos(req, res);
+});
 
+router.delete("/removerLeitura", function (req, res) {
+  DashboardController.removerLeitura(req, res);
+});
 
 module.exports = router;

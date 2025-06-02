@@ -127,6 +127,8 @@ function carregarTexto() {
 livroSelect.selectedIndex = 0;
 livroSelect.dispatchEvent(new Event('change'));
 
+carregarCapitulosLidos();
+
 
 const botaoAnterior = document.getElementById('anteriorCapitulo');
 const botaoProximo = document.getElementById('proximoCapitulo');
@@ -162,11 +164,31 @@ btnMarcarLido.addEventListener('click', () => {
   const jaLido = capitulosLidos.has(chave);
 
   if (jaLido) {
-    capitulosLidos.delete(chave);
-    btnMarcarLido.textContent = 'Marcar como lido';
-    btnMarcarLido.setAttribute('aria-pressed', 'false');
-    btnMarcarLido.classList.remove('marked');
-  } else {
+  capitulosLidos.delete(chave);
+  btnMarcarLido.textContent = 'Marcar como lido';
+  btnMarcarLido.setAttribute('aria-pressed', 'false');
+  btnMarcarLido.classList.remove('marked');
+
+  // Remover do banco
+  fetch("/dashboard/removerLeitura", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      idUsuario: idUsuario,
+      livro: livro,
+      capitulo: capitulo
+    })
+  })
+    .then(res => {
+      if (!res.ok) console.error("Erro ao remover leitura");
+    })
+    .catch(err => {
+      console.error("Erro de conexão ao remover leitura:", err);
+    });
+
+} else {
     capitulosLidos.add(chave);
     btnMarcarLido.textContent = '✓ Lido';
     btnMarcarLido.setAttribute('aria-pressed', 'true');
@@ -196,5 +218,30 @@ btnMarcarLido.addEventListener('click', () => {
       });
   }
 });
+
+function carregarCapitulosLidos() {
+  const idUsuario = sessionStorage.ID_USUARIO;
+
+  fetch(`/dashboard/capitulosLidos/${idUsuario}`)
+    .then(res => res.json())
+    .then(dados => {
+      dados.forEach(registro => {
+        const chave = `${registro.livro}-${registro.capitulo}`;
+        capitulosLidos.add(chave);
+      });
+      const livro = livroSelect.value;
+      const capitulo = capituloSelect.value;
+      const chaveAtual = `${livro}-${capitulo}`;
+      const jaLido = capitulosLidos.has(chaveAtual);
+
+      btnMarcarLido.textContent = jaLido ? '✓ Lido' : 'Marcar como lido';
+      btnMarcarLido.setAttribute('aria-pressed', String(jaLido));
+      btnMarcarLido.classList.toggle('marked', jaLido);
+    })
+    .catch(err => {
+      console.error("Erro ao buscar capítulos lidos:", err);
+    });
+}
+
 
 
