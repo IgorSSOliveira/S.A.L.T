@@ -1,28 +1,5 @@
 var database = require("../database/config")
 
-function BuscarprogressoBiblia(id) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
-    var instrucaoSql = `
-        SELECT * FROM view_biblia WHERE usuario.id = '${id}';
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
-
-// Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
-function BuscarProgressoLivros(id) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
-
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
-    var instrucaoSql = `
-        SELECT * FROM view_livro WHERE usuario.id = '${id}';
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
-
-
 
 async function inserirLeitura(fkUsuario, nomeLivro, capitulo) {
     // 1. Buscar o ID do livro pelo nome
@@ -53,9 +30,23 @@ async function inserirLeitura(fkUsuario, nomeLivro, capitulo) {
 }
 
 
+function obterProgresso(idUsuario) {
+    const instrucaoSql =
+        `SELECT * FROM view_biblia WHERE fkUsuario = ${idUsuario};`;
+    return database.executar(instrucaoSql);
+}
+
+function listarLivrosComProgresso(idUsuario) {
+    const instrucaoSql = `
+        SELECT * FROM view_livro WHERE fkUsuario = ${idUsuario};`;
+    return database.executar(instrucaoSql);
+}
+
+
+
 
 module.exports = {
-    BuscarprogressoBiblia,
-    BuscarProgressoLivros,
-    inserirLeitura
+    inserirLeitura,
+    obterProgresso,
+    listarLivrosComProgresso
 };

@@ -135,13 +135,25 @@ body {
   color: white;
 }
 
+.porcentagem {
+  font-weight: bold;
+  color: white;
+}
+
+.containerRegistro {
+  flex-direction: row;
+  display: flex;
+  gap: 13.5vw;
+}
+
+
 .nomeLivro {
   font-weight: bold;
   margin-bottom: 5px;
 }
 
 .barraProgresso {
-  background-color: #444;
+  background-color: white;
   height: 8px;
   border-radius: 4px;
   overflow: hidden;
@@ -491,4 +503,3 @@ select {
     box-shadow: 0 0 15px #50CF01;
   }
 }
-

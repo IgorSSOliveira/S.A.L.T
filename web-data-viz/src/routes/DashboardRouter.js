@@ -5,16 +5,20 @@ var DashboardController = require("../controllers/DashboardController");
 
 
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
-router.get("/BuscarprogressoBiblia", function (req, res) {
-  DashboardController.BuscarprogressoBiblia(req, res);
-})
-
-router.get("/BuscarProgressoLivros", function (req, res) {
-  DashboardController.BuscarProgressoLivros(req, res);
-});
 
 router.post("/inserirLeitura", function (req, res) {
   DashboardController.inserirLeitura(req, res);
 });
+
+
+router.get("/progresso/:idUsuario", function (req, res) {
+    DashboardController.obterProgresso(req, res);
+});
+
+router.get("/livros/:idUsuario", function (req, res) {
+    DashboardController.listarLivros(req, res);
+});
+
+
 
 module.exports = router;
