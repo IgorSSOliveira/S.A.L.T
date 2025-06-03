@@ -7,18 +7,18 @@ CREATE TABLE usuario (
     senha VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE Livro(
+CREATE TABLE livro(
 id INT PRIMARY KEY AUTO_INCREMENT, 
 nome VARCHAR (100) NOT NULL,
 qtdCapitulos INT
 );
 
-CREATE TABLE Leitura (
+CREATE TABLE leitura (
 id INT AUTO_INCREMENT,
 fkUsuario INT,
 fkLivro INT,
-Livro VARCHAR(100),
-capítulo INT,
+livro VARCHAR(100),
+capitulo INT,
 CONSTRAINT pkLeitura 
 	PRIMARY KEY (id, fkUsuario, fkLivro),
 CONSTRAINT fkUsuarioLeitura 
@@ -26,11 +26,11 @@ CONSTRAINT fkUsuarioLeitura
 		REFERENCES usuario(id),
 CONSTRAINT fkLivroLeitura 
 	FOREIGN KEY (fkLivro) 
-		REFERENCES Livro(id)
+		REFERENCES livro(id)
 );
 
 
-INSERT INTO Livro (nome, qtdCapitulos)
+INSERT INTO livro (nome, qtdCapitulos)
 VALUES
 ('Gênesis', 50),
 ('Êxodo', 40),
@@ -100,35 +100,37 @@ VALUES
 ('Apocalipse', 22);
 
 
-
-CREATE OR REPLACE VIEW view_biblia AS
+CREATE VIEW view_biblia AS
 	SELECT 
 		u.id AS fkUsuario,
 		ROUND(
-			COUNT(DISTINCT le.fkLivro, le.capítulo) * 100.0 / (SELECT SUM(qtdCapitulos) FROM Livro),
+			COUNT(DISTINCT le.fkLivro, le.capitulo) * 100.0 / (SELECT SUM(qtdCapitulos) FROM livro),
             3) AS progresso
 	FROM usuario u
-	LEFT JOIN Leitura le 
+	LEFT JOIN leitura le 
 		ON u.id = le.fkUsuario
 	GROUP BY u.id;
     
 
 CREATE VIEW view_lido AS
-	SELECT 
-		Livro, 
-		capítulo
-    FROM Leitura;
+	SELECT
+		l.id,
+		l.fkUsuario,
+		l.livro,
+		l.capitulo
+	FROM leitura l;
+
     
 CREATE VIEW view_livro AS
 	SELECT
 		u.id AS fkUsuario,
 		l.nome,
 		l.qtdCapitulos AS total,
-		COUNT(le.capítulo) AS lidos,
-		ROUND((COUNT(le.capítulo) * 100.0) / l.qtdCapitulos, 2) AS progresso
+		COUNT(le.capitulo) AS lidos,
+		ROUND((COUNT(le.capitulo) * 100.0) / l.qtdCapitulos, 2) AS progresso
 	FROM usuario u
-		CROSS JOIN Livro l
-		LEFT JOIN Leitura le ON le.fkUsuario = u.id AND le.fkLivro = l.id
+		CROSS JOIN livro l
+		LEFT JOIN leitura le ON le.fkUsuario = u.id AND le.fkLivro = l.id
 	GROUP BY u.id, l.id, l.nome, l.qtdCapitulos
 	ORDER BY progresso DESC;
 
