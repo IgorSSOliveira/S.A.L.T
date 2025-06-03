@@ -2,9 +2,9 @@ var database = require("../database/config")
 
 
 async function inserirLeitura(fkUsuario, nomeLivro, capitulo) {
-    // 1. Buscar o ID do livro pelo nome
+
     const buscarIdLivroSql = `
-        SELECT id FROM Livro WHERE nome = '${nomeLivro}';
+        SELECT id FROM livro WHERE nome = '${nomeLivro}';
     `;
 
     try {
@@ -15,9 +15,8 @@ async function inserirLeitura(fkUsuario, nomeLivro, capitulo) {
 
         const fkLivro = resultado[0].id;
 
-        // 2. Inserir leitura com fkLivro
         const inserirSql = `
-            INSERT INTO Leitura (fkUsuario, fkLivro, Livro, capítulo)
+            INSERT INTO leitura (fkUsuario, fkLivro, livro, capitulo)
             VALUES (${fkUsuario}, ${fkLivro}, '${nomeLivro}', ${capitulo});
         `;
         console.log("Executando:\n", inserirSql);
@@ -44,16 +43,20 @@ function listarLivrosComProgresso(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
-function listarCapitulosLidos(idUsuario) {
+function buscarCapitulosLidos(idUsuario) {
   const instrucaoSql = `
-    SELECT * FROM view_lido WHERE fkUsuario = ${idUsuario};
-`;
+    SELECT livro, capitulo 
+    FROM leitura 
+    WHERE fkUsuario = ${idUsuario};
+  `;
+
   return database.executar(instrucaoSql);
 }
 
+
 function removerLeitura(idUsuario, livro, capitulo) {
   const instrucaoSql = `
-    DELETE FROM Leitura WHERE fkUsuario = ${idUsuario} AND Livro = '${livro}' AND capítulo = ${capitulo};
+    DELETE FROM leitura WHERE fkUsuario = ${idUsuario} AND livro = '${livro}' AND capitulo = ${capitulo};
 `;
   return database.executar(instrucaoSql);
 }
@@ -65,6 +68,6 @@ module.exports = {
     inserirLeitura,
     obterProgresso,
     listarLivrosComProgresso,
-    listarCapitulosLidos,
+    buscarCapitulosLidos,
     removerLeitura
 };

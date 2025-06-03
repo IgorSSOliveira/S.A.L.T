@@ -73,8 +73,8 @@
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
         <div id="div_aguardar" class="loading_card">
-          <img src="./assets/circle-loading.gif" class="loading-img">
-          <p style="margin-top: 10%;">Carregando...</p>
+          <img src="./assets/loading.gif" class="loading-img">
+          <p style="margin-top: 10%;">Cadastro realizado com sucesso!<br>Redirecionando ao login...</p>
         </div>
 
         <div id="div_erros_login"></div>
@@ -269,7 +269,8 @@
 
 
     } else {
-      setInterval(sumirMensagem, 1000);
+      cardErro.style.display = "none";
+      aguardar();
     }
 
 
@@ -291,30 +292,25 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
           setTimeout(() => {
             window.location = "login.html";
-          }, "2000");
-
+          }, 2000);
           limparFormulario();
-          finalizarAguardar();
+          setInterval(finalizarAguardar, 5000);
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta} `);
-        finalizarAguardar();
+        setInterval(finalizarAguardar, 5000);
       });
 
     return false;
   }
 
   function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    cardErro.style.display = "none"
+  }
 </script>

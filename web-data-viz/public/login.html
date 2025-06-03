@@ -66,7 +66,7 @@
 
                 <div id="div_aguardar" class="loading_card">
                     <img src="./assets/loading.gif" class="loading-img">
-                    <p style="margin-top: 10%;">Carregando...</p>
+                    <p style="margin-top: 10%;">Logando...</p>
                   </div>
                                 
 
@@ -134,8 +134,6 @@
             setInterval(sumirMensagem, 5000);
         }
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
 
         fetch("/usuarios/autenticar", {
             method: "POST",

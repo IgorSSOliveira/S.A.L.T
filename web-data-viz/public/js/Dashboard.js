@@ -12,7 +12,7 @@ fetch(`/dashboard/progresso/${idUsuario}`)
     return response.json();
   })
   .then(data => {
-    const porcentagem = data.progresso; // Assume que a view retorna { progresso: XX }
+    const porcentagem = data.progresso;
 
     document.getElementById('porcentagemCentro').innerText = porcentagem + '%';
 

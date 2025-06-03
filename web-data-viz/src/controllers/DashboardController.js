@@ -44,15 +44,16 @@ function listarLivros(req, res) {
 }
 
 
-function listarCapitulosLidos(req, res) {
+async function listarCapitulosLidos(req, res) {
   const idUsuario = req.params.idUsuario;
 
-  DashboardModel.listarCapitulosLidos(idUsuario)
-    .then(resultado => res.json(resultado))
-    .catch(erro => {
-      console.error("Erro ao listar capítulos lidos:", erro);
-      res.status(500).json(erro.sqlMessage || erro.message);
-    });
+  try {
+    const resultado = await DashboardModel.buscarCapitulosLidos(idUsuario);
+    res.status(200).json(resultado);
+  } catch (erro) {
+    console.error("Erro no controller ao listar capítulos lidos:", erro);
+    res.status(500).json({ erro: "Erro ao buscar capítulos lidos." });
+  }
 }
 
 

@@ -67,7 +67,7 @@ const livros = [
   { nome: "Apocalipse", id: "Apocalipse", capitulos: 22 }
 ];
 
-
+const btnMarcarLido = document.getElementById('btnMarcarLido');
 const livroSelect = document.getElementById('livro');
 const capituloSelect = document.getElementById('capitulo');
 const textoBiblico = document.getElementById('textoBiblico');
@@ -164,31 +164,31 @@ btnMarcarLido.addEventListener('click', () => {
   const jaLido = capitulosLidos.has(chave);
 
   if (jaLido) {
-  capitulosLidos.delete(chave);
-  btnMarcarLido.textContent = 'Marcar como lido';
-  btnMarcarLido.setAttribute('aria-pressed', 'false');
-  btnMarcarLido.classList.remove('marked');
+    capitulosLidos.delete(chave);
+    btnMarcarLido.textContent = 'Marcar como lido';
+    btnMarcarLido.setAttribute('aria-pressed', 'false');
+    btnMarcarLido.classList.remove('marked');
 
-  // Remover do banco
-  fetch("/dashboard/removerLeitura", {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      idUsuario: idUsuario,
-      livro: livro,
-      capitulo: capitulo
+    // Remover do banco
+    fetch("/dashboard/removerLeitura", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        idUsuario: idUsuario,
+        livro: livro,
+        capitulo: capitulo
+      })
     })
-  })
-    .then(res => {
-      if (!res.ok) console.error("Erro ao remover leitura");
-    })
-    .catch(err => {
-      console.error("Erro de conexão ao remover leitura:", err);
-    });
+      .then(res => {
+        if (!res.ok) console.error("Erro ao remover leitura");
+      })
+      .catch(err => {
+        console.error("Erro de conexão ao remover leitura:", err);
+      });
 
-} else {
+  } else {
     capitulosLidos.add(chave);
     btnMarcarLido.textContent = '✓ Lido';
     btnMarcarLido.setAttribute('aria-pressed', 'true');
@@ -222,26 +222,34 @@ btnMarcarLido.addEventListener('click', () => {
 function carregarCapitulosLidos() {
   const idUsuario = sessionStorage.ID_USUARIO;
 
-  fetch(`/dashboard/capitulosLidos/${idUsuario}`)
-    .then(res => res.json())
+  return fetch(`/dashboard/capitulos-lidos/${idUsuario}`)
+    .then(res => {
+      if (!res.ok) throw new Error('Erro ao buscar capítulos lidos');
+      return res.json();
+    })
     .then(dados => {
-      dados.forEach(registro => {
-        const chave = `${registro.livro}-${registro.capitulo}`;
+      dados.forEach(item => {
+        const chave = `${item.livro}-${item.capitulo}`;
         capitulosLidos.add(chave);
       });
+
+      // Atualiza o botão se o capítulo atual já foi lido
       const livro = livroSelect.value;
       const capitulo = capituloSelect.value;
       const chaveAtual = `${livro}-${capitulo}`;
       const jaLido = capitulosLidos.has(chaveAtual);
-
       btnMarcarLido.textContent = jaLido ? '✓ Lido' : 'Marcar como lido';
       btnMarcarLido.setAttribute('aria-pressed', String(jaLido));
       btnMarcarLido.classList.toggle('marked', jaLido);
     })
     .catch(err => {
-      console.error("Erro ao buscar capítulos lidos:", err);
+      console.error("Erro ao carregar capítulos lidos:", err);
     });
 }
 
+livroSelect.selectedIndex = 0;
 
+carregarCapitulosLidos().then(() => {
+  livroSelect.dispatchEvent(new Event('change'));
+});
 
