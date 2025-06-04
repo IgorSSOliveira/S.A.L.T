@@ -134,6 +134,53 @@ body {
   font-size: 50px;
 }
 
+
+
+.bannerSobremim {
+  height: var(--tamanho-banner);
+  color: white;
+  background-image: url('../assets/imgs/imagemSobremim.jpeg');
+  background-size: cover;
+  position: relative;
+}
+
+.bannerSobremim .container {
+  justify-content: center;
+  align-items: center;
+  height: 36%;
+  background-color: #002a78db;
+  position: relative;
+  top: 30.5%;
+  border-radius: 26px;
+  z-index: 1;
+}
+
+.bannerSobremim::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(0 0 0 / 10%);
+  z-index: 1;
+}
+
+.bannerSobremim .container p {
+  width: 87%;
+  margin: 0;
+  padding: 0;
+  font-size: 36px;
+  text-align: center;
+  line-height: 213%;
+}
+
+.bannerSobremim .container span {
+  font-weight: 800;
+  font-size: 64px;
+}
+
+
 /* MISSÃO VISÃO VALORES */
 
 .social {
@@ -146,7 +193,9 @@ body {
 }
 
 .box img {
-  width: 170px;
+  width: 64vh;
+  margin-top: 55px;
+  margin-bottom: 55px;
 }
 
 .social .container .boxes {
@@ -156,14 +205,102 @@ body {
   padding: 30px 0;
 }
 
+
 .social p {
-  text-align: center;
+  text-align: justify;
+  margin-bottom: 16px;
+  font-size: 20px;
+  padding: 12px;
 }
 
 .box {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+
+
+
+.socialTexto1 {
+  background-color: #e5e5e5;
+  display: flex;
+}
+
+.socialTexto1 p {
+  text-align: justify;
+  margin-bottom: 16px;
+  font-size: 20px;
+  padding: 12px;
+  background: radial-gradient(circle,
+      #002B96 30%,
+      #002B78 60%,
+      #002b5c 100%);
+  color: white;
+}
+
+.p1 {
+  text-align: justify;
+  margin-bottom: 16px;
+  font-size: 20px;
+  border: 2px solid black;
+  padding: 12px;
+}
+
+.TextoFoto {
+  flex-direction: row;
+  display: flex;
+  gap: 8%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.socialTexto2 {
+  background: radial-gradient(circle,
+      #002B96 30%,
+      #002B78 60%,
+      #002b5c 100%);
+  display: flex;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+
+.p2 {
+  text-align: justify;
+  margin-bottom: 16px;
+  font-size: 20px;
+  padding: 12px;
+  color: white;
+}
+
+
+
+
+.socialTextoHome {
+  background-color: #e5e5e5;
+  display: flex;
+}
+
+.socialTextoHome p {
+  text-align: justify;
+  margin-bottom: 16px;
+  font-size: 20px;
+  padding: 12px;
+  color: white;
+}
+
+.p3 {
+  text-align: justify;
+  margin-bottom: 20px;
+  font-size: 20px;
+  padding: 12px;
+  color: white;
+  background: radial-gradient(circle, #002B96 30%, #002B78 60%, #002b5c 100%);
+  margin-top: 20px;
+
 }
 
 /* FOOTER */

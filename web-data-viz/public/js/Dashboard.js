@@ -83,14 +83,14 @@ function gerarHTMLLivro(livro) {
 
 
 function carregarLivros() {
-  // Filtrar apenas livros em progresso (entre 1% e 99%) e ordenar pela ordem da Bíblia
+  
   const livrosEmProgresso = livros
     .filter(l => l.lidos > 0 && (l.lidos / l.total * 100) < 100)
     .sort((a, b) => a.idLivro - b.idLivro);
 
-  const principais = livrosEmProgresso.slice(0, 4); // <- só os 4 primeiros EM PROGRESSO
+  const principais = livrosEmProgresso.slice(0, 4);
 
-  // Exibir todos os livros na ordem da Bíblia
+  
   const todos = [...livros].sort((a, b) => a.idLivro - b.idLivro);
 
   document.getElementById("listaLivrosPrincipais").innerHTML = principais.map(gerarHTMLLivro).join("");
