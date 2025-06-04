@@ -109,17 +109,6 @@ body {
   position: relative;
 }
 
-.banner::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgb(0 0 0 / 13%);
-  z-index: 1;
-}
-
 .banner .container {
   justify-content: center;
   align-items: center;
@@ -540,18 +529,6 @@ body {
 .loading-img {
   height: 82px;
   margin-right: 20px;
-}
-
-/* SIMULADOR */
-
-.simulador {
-  color: white;
-}
-
-.simulador .container {
-  flex-direction: column;
-  overflow: scroll;
-  height: var(--tamanho-simulador);
 }
 
 /* ALERTA */

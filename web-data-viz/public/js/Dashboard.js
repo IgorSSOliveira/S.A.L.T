@@ -83,15 +83,22 @@ function gerarHTMLLivro(livro) {
 
 
 function carregarLivros() {
-  const listaOrdenada = [...livros].sort((a, b) => (b.lidos / b.total) - (a.lidos / a.total));
-  const principais = listaOrdenada.slice(0, 4);
-  const todos = listaOrdenada;
+  // Filtrar apenas livros em progresso (entre 1% e 99%) e ordenar pela ordem da Bíblia
+  const livrosEmProgresso = livros
+    .filter(l => l.lidos > 0 && (l.lidos / l.total * 100) < 100)
+    .sort((a, b) => a.idLivro - b.idLivro);
+
+  const principais = livrosEmProgresso.slice(0, 4); // <- só os 4 primeiros EM PROGRESSO
+
+  // Exibir todos os livros na ordem da Bíblia
+  const todos = [...livros].sort((a, b) => a.idLivro - b.idLivro);
 
   document.getElementById("listaLivrosPrincipais").innerHTML = principais.map(gerarHTMLLivro).join("");
   document.getElementById("todosLivros").innerHTML = todos.map(gerarHTMLLivro).join("");
 
   filtrarLivrosSemProgresso();
 }
+
 
 function abrirPopup() {
   document.getElementById("popupTodosLivros").classList.remove("hidden");
