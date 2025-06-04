@@ -105,7 +105,7 @@ CREATE VIEW view_biblia AS
 		u.id AS fkUsuario,
 		ROUND(
 			COUNT(DISTINCT le.fkLivro, le.capitulo) * 100.0 / (SELECT SUM(qtdCapitulos) FROM livro),
-            3) AS progresso
+            2) AS progresso
 	FROM usuario u
 	LEFT JOIN leitura le 
 		ON u.id = le.fkUsuario
@@ -119,21 +119,20 @@ CREATE VIEW view_lido AS
 		l.livro,
 		l.capitulo
 	FROM leitura l;
-
     
 CREATE VIEW view_livro AS
 	SELECT
 		u.id AS fkUsuario,
+		l.id AS idLivro,         
 		l.nome,
 		l.qtdCapitulos AS total,
 		COUNT(le.capitulo) AS lidos,
 		ROUND((COUNT(le.capitulo) * 100.0) / l.qtdCapitulos, 2) AS progresso
 	FROM usuario u
-		CROSS JOIN livro l
-		LEFT JOIN leitura le ON le.fkUsuario = u.id AND le.fkLivro = l.id
+	CROSS JOIN livro l
+	LEFT JOIN leitura le ON le.fkUsuario = u.id AND le.fkLivro = l.id
 	GROUP BY u.id, l.id, l.nome, l.qtdCapitulos
-	ORDER BY progresso DESC;
-
+	ORDER BY l.id;
 
 
 
