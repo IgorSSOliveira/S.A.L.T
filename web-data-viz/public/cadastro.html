@@ -230,6 +230,7 @@
 
       mensagem_erro.innerHTML = `<span>ERRO!!!</span><br>Email invalido.<li>Verifique se o e-mail contém o símbolo “@”`;
       finalizarAguardar();
+      return false;
 
 
     } else if (senhaVar.length < 8) {
